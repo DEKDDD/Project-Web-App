@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CE Web - Activity</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">CE Web</div>
+      <div class="all_activity">
+        <button id="btn_available" class="button_available">Available</button>
+        <button id="btn_close" class="button_close">Close</button>
+      </div>
+      <div class="nav_auth">
+        <button class="button_login">Log in</button>
+        <button class="button_signup">Sign Up</button>
+      </div>
+    </nav>
+
+    <main class="container">
+      <section class="search_section">
+        <button class="button_new">New</button>
+        <input
+          type="text"
+          placeholder="Search by keywords..."
+          class="search_input"
+        />
+        <button class="button_filter">Filter</button>
+      </section>
+
+      <h2>Available Activity</h2>
+      <div class="activity_grid">
+        <a href="detail.html" class="activity_card_link">
+          <div class="activity_card">
+            <img src="cat.jpg" alt="cat" class="activity_img" />
+            <div class="activity_info">
+              <h3>Activity Name</h3>
+              <p>Description Activity Card...</p>
+              <span class="status status_open">Status: Open</span>
+            </div>
+          </div>
+        </a>
+        <a href="detail.html" class="activity_card_link">
+          <div class="activity_card">
+            <img src="cat.jpg" alt="cat" class="activity_img" />
+            <div class="activity_info">
+              <h3>Activity Name</h3>
+              <p>Description Activity Card...</p>
+              <span class="status status_open">Status: Open</span>
+            </div>
+          </div>
+        </a>
+        <a href="detail.html" class="activity_card_link">
+          <div class="activity_card">
+            <img src="cat.jpg" alt="cat" class="activity_img" />
+            <div class="activity_info">
+              <h3>Activity Name</h3>
+              <p>Description Activity Card...</p>
+              <span class="status status_open">Status: Open</span>
+            </div>
+          </div>
+        </a>
+
+        <div class="activity_card">
+          <img src="cat.jpg" alt="cat" class="activity_img" />
+          <div class="activity_info">
+            <h3>Activity Name</h3>
+            <p>Description Activity Card...</p>
+            <span class="status status_close">Status: Close</span>
+          </div>
+        </div>
+
+        <div class="activity_card">
+          <img src="cat.jpg" alt="cat" class="activity_img" />
+          <div class="activity_info">
+            <h3>Activity Name</h3>
+            <p>Description Activity Card...</p>
+            <span class="status status_close">Status: Close</span>
+          </div>
+        </div>
+
+        <div class="activity_card">
+          <img src="cat.jpg" alt="cat" class="activity_img" />
+          <div class="activity_info">
+            <h3>Activity Name</h3>
+            <p>Description Activity Card...</p>
+            <span class="status status_close">Status: Close</span>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="index.js"></script>
+  </body>
+</html>
