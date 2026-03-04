@@ -8,20 +8,28 @@
   </head>
   <body>
     <nav class="navbar">
+      <a href="index.html" class="index-link">
       <div class="logo">CE Web</div>
+      </a>
       <div class="all_activity">
         <button id="btn_available" class="button_available">Available</button>
         <button id="btn_close" class="button_close">Close</button>
       </div>
       <div class="nav_auth">
-        <button class="button_login">Log in</button>
-        <button class="button_signup">Sign Up</button>
+        <a href="login.html">
+          <button class="button_login">Log in</button>
+        </a>
+        <a href="signup.html">
+          <button class="button_signup">Sign Up</button>
+        </a>
       </div>
     </nav>
 
     <main class="container">
       <section class="search_section">
+        <a href="create_act.html">
         <button class="button_new">New</button>
+        </a>
         <input
           type="text"
           placeholder="Search by keywords..."
@@ -31,27 +39,7 @@
       </section>
 
       <h2>Available Activity</h2>
-      <div class="activity_grid">
-        <a href="detail.html" class="activity_card_link">
-          <div class="activity_card">
-            <img src="cat.jpg" alt="cat" class="activity_img" />
-            <div class="activity_info">
-              <h3>Activity Name</h3>
-              <p>Description Activity Card...</p>
-              <span class="status status_open">Status: Open</span>
-            </div>
-          </div>
-        </a>
-        <a href="detail.html" class="activity_card_link">
-          <div class="activity_card">
-            <img src="cat.jpg" alt="cat" class="activity_img" />
-            <div class="activity_info">
-              <h3>Activity Name</h3>
-              <p>Description Activity Card...</p>
-              <span class="status status_open">Status: Open</span>
-            </div>
-          </div>
-        </a>
+      <div id="event-list" class="activity_grid">
         <a href="detail.html" class="activity_card_link">
           <div class="activity_card">
             <img src="cat.jpg" alt="cat" class="activity_img" />
@@ -72,25 +60,9 @@
           </div>
         </div>
 
-        <div class="activity_card">
-          <img src="cat.jpg" alt="cat" class="activity_img" />
-          <div class="activity_info">
-            <h3>Activity Name</h3>
-            <p>Description Activity Card...</p>
-            <span class="status status_close">Status: Close</span>
-          </div>
-        </div>
-
-        <div class="activity_card">
-          <img src="cat.jpg" alt="cat" class="activity_img" />
-          <div class="activity_info">
-            <h3>Activity Name</h3>
-            <p>Description Activity Card...</p>
-            <span class="status status_close">Status: Close</span>
-          </div>
-        </div>
       </div>
     </main>
     <script src="index.js"></script>
+    <script src="api.js"></script>
   </body>
 </html>

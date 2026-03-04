@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Activity Detail</title>
+    <title>Signup</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -20,13 +20,18 @@
         </a>
       </div>
     </nav>
-    <img src="cat.jpg" alt="cat" class="detail_img" />
-    <h2>กิจกรรมแมวๆ</h2>
-    <h3>ขอเชิญผู้เสพแมวทั้งหลายมาประชุมกันโดยนัดหมาย</h3>
-    <h4>ระยะเวลา: forever</h4>
-    <button>สมัคร</button>
+    <div class="form-page-wrapper">
+        <div class="form-container">
+            <h2>สมัครสมาชิก</h2>
+                <form class="default-form" onsubmit="handleRegister(event)">
+                    <input type="text" placeholder="Username" id="username" required>
+                    <input type="email" placeholder="Email" id="email" required>
+                    <input type="password" placeholder="Password (At least 8 characters)" id="password" required>
+                    <button type="submit">สมัครสมาชิก</button>
+                </form>
+        </div>
+    </div>
     <a href="index.html" class="close-button">X</a>
-    <!-- yay -->
     <script src="api.js"></script>
     <script src="main.js"></script>
   </body>

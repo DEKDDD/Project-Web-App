@@ -20,6 +20,14 @@ body {
     
 }
 
+.index-link {
+  cursor: pointer; /* เปลี่ยนเมาส์เป็นรูปมือ */
+  transition: 0.3s;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
 
 .search_section {
     margin: 20px 0;
@@ -83,6 +91,82 @@ body {
     border-radius: 15px;
     font-size: 0.8rem;
     font-weight: bold;
+}
+
+.close-button {
+    position: fixed;    /* ทำให้ปุ่มลอยอยู่ที่เดิมแม้จะเลื่อนหน้าจอ (Scroll) */
+    top: 60px;          /* ห่างจากขอบบน 20px */
+    right: 20px;        /* ห่างจากขอบขวา 20px */
+    
+    width: 80px;        /* ความกว้างปุ่ม */
+    height: 40px;       /* ความสูงปุ่ม */
+    background-color: #ec4242; /* สีพื้นหลังปุ่ม (สีดำเทา) */
+    color: white;       /* สีของตัว X */
+    
+    text-decoration: none; /* ลบขีดเส้นใต้ */
+    font-size: 30px;    /* ขนาดตัวกากบาท */
+    display: flex;      /* ใช้จัดการให้กากบาทอยู่ตรงกลางปุ่ม */
+    justify-content: center;
+    align-items: center;
+    
+
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3); /* ใส่เงาให้ดูมีมิติ */
+    transition: 0.3s;   /* ให้ดูสมูทตอนเอาเมาส์วาง */
+    z-index: 1000;      /* มั่นใจว่าปุ่มจะลอยอยู่เหนือทุกอย่าง */
+}
+
+.close-button:hover {
+    background-color: #ff4d4d; /* เปลี่ยนเป็นสีแดงตอนเอาเมาส์วาง */
+    transform: scale(1.1);     /* ขยายขนาดขึ้นเล็กน้อย */
+}
+
+/* ตัวฟอร์มด้านใน */
+.default-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;            /* สำคัญ: ให้ฟอร์มกางเต็มความกว้างของกล่องขาว */
+    align-items: center;    /* จัด input และ button ให้อยู่กึ่งกลาง */
+}
+
+.default-form input {
+    width: 80%;             /* ปรับความกว้างช่องพิมพ์ตามต้องการ */
+    max-width: 300px;
+    padding: 10px;
+}
+
+.default-form textarea {
+    width: 80%;             /* ปรับความกว้างช่องพิมพ์ตามต้องการ */
+    max-width: 300px;
+    padding: 10px;
+}
+
+/* ตัวคลุมชั้นนอกสุด ทำหน้าที่จัดกึ่งกลาง */
+.form-page-wrapper {
+    display: flex;
+    justify-content: center; /* กึ่งกลางแนวนอน */
+    align-items: center;     /* กึ่งกลางแนวตั้ง */
+    width: 100%;             /* กว้างเต็มพื้นที่ */
+    min-height: 100vh;      /* สูงเท่ากับความสูงหน้าจอ */
+    background-color: #f4f7f6; /* ใส่สีพื้นหลังเฉพาะหน้านี้ได้เลย */
+}
+
+.form-container {
+    display: flex;          /* ต้องใส่ display: flex เพื่อให้สั่งกึ่งกลางได้ */
+    flex-direction: column; /* จัดเนื้อหาข้างใน (H2, Form, P) เป็นแนวตั้ง */
+    align-items: center;    /* จัดเนื้อหาทุกอย่างในกล่องขาวให้ "อยู่กึ่งกลาง" */
+    
+    background-color: white;
+    padding: 50px;          /* เพิ่ม padding ให้กล่องดูใหญ่และโปร่งขึ้น */
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    width: 60%; 
+    max-width: 600px;       /* เพิ่ม max-width เพื่อไม่ให้มันกางกว้างเกินไปในจอคอม */
+    text-align: center;
+}
+
+.image-preview {
+    display: None
 }
 
 .status_open { background-color: #d4edda; color: #155724; }
