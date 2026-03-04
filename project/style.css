@@ -1,15 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Fredoka One', 'Itim', sans-serif;
     margin: 0;
-    padding: 0;
+    padding-top: 82px;
     background-color: #f4f4f4;
 }
 
+button {
+    font-family: 'Fredoka One', 'Itim', sans-serif;
+}
+
+button:hover{
+    transform : scale(1.05);
+}
 
 .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     display: flex;
+    box-sizing: border-box;
     justify-content: space-between;
-    background-color: #333;
+    align-items: center;
+    background-color: #45abff;
     color: white;
     padding: 1rem 2rem;
 }
@@ -18,6 +34,116 @@ body {
     display: flex;
     gap: 10px;
     
+}
+
+.logo{
+    font-size: 40px;
+}
+
+.all_activity {
+    display: flex;
+    gap: 10px;
+}
+.button_available {
+    width : 180px;
+    height : 50px;
+    padding: 0px 10px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    align-items: center;
+    text-decoration: none;
+    color: #000000;
+    background-color: #24e23e;
+    border: 4px solid #000;
+    border-radius: 15px;
+    transition: all 0.1s ease;
+    cursor: pointer;
+    letter-spacing: 2px;
+}
+
+.button_close {
+    width : 180px;
+    height : 50px;
+    padding: 0px 10px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    align-items: center;
+    text-decoration: none;
+    color: #000000;
+    background-color: #ff5252;
+    border: 4px solid #000;
+    border-radius: 15px;
+    transition: all 0.1s ease;
+    cursor: pointer;
+    letter-spacing: 2px;
+}
+
+.button_login {
+    width : 100px;
+    height : 50px;
+    padding: 0px 10px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    align-items: center;
+    text-decoration: none;
+    color: #000000;
+    background-color: #ffffff;
+    border: 4px solid #000;
+    border-radius: 15px;
+    transition: all 0.1s ease;
+    cursor: pointer;
+    letter-spacing: 2px;
+}
+
+.button_signup {
+    width : 120px;
+    height : 50px;
+    padding: 0px 10px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    align-items: center;
+    text-decoration: none;
+    color: #000000;
+    background-color: #ffffff;
+    border: 4px solid #000;
+    border-radius: 15px;
+    transition: all 0.1s ease;
+    cursor: pointer;
+    letter-spacing: 2px;
+}
+
+/* สไตล์ของเมนู */
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: -300px; /* ซ่อนไว้ทางขวา (กว้าง 300px) */
+  width: 300px;
+  height: 100%;
+  background-color: white;
+  box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+  transition: 0.3s; /* ทำให้มันเลื่อนแบบลื่นๆ */
+  z-index: 1000;
+}
+
+/* คลาสที่จะเพิ่มเข้าไปเมื่อกดปุ่ม */
+.side-menu.active {
+  right: 0; /* เลื่อนกลับเข้ามาในจอ */
+}
+
+/* ตกแต่งปุ่มปิดและเนื้อหาข้างใน */
+.menu-content { padding: 20px; }
+.close-btn { cursor: pointer; font-size: 25px; float: right; }
+
+.index-link {
+  cursor: pointer; /* เปลี่ยนเมาส์เป็นรูปมือ */
+  transition: 0.3s;
+  text-decoration: none;
+  color: inherit;
+  display: block;
 }
 
 
@@ -83,6 +209,84 @@ body {
     border-radius: 15px;
     font-size: 0.8rem;
     font-weight: bold;
+}
+
+.close-button {
+    position: fixed;    /* ทำให้ปุ่มลอยอยู่ที่เดิมแม้จะเลื่อนหน้าจอ (Scroll) */
+    top: 90px;          /* ห่างจากขอบบน 20px */
+    right: 20px;        /* ห่างจากขอบขวา 20px */
+    
+    width: 80px;        /* ความกว้างปุ่ม */
+    height: 40px;       /* ความสูงปุ่ม */
+    background-color: #ec4242; /* สีพื้นหลังปุ่ม (สีดำเทา) */
+    color: white;       /* สีของตัว X */
+    
+    text-decoration: none; /* ลบขีดเส้นใต้ */
+    font-size: 30px;    /* ขนาดตัวกากบาท */
+    display: flex;      /* ใช้จัดการให้กากบาทอยู่ตรงกลางปุ่ม */
+    justify-content: center;
+    align-items: center;
+    border: 4px solid #000;
+    border-radius: 15px;
+    
+
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3); /* ใส่เงาให้ดูมีมิติ */
+    transition: 0.3s;   /* ให้ดูสมูทตอนเอาเมาส์วาง */
+    z-index: 1000;      /* มั่นใจว่าปุ่มจะลอยอยู่เหนือทุกอย่าง */
+}
+
+.close-button:hover {
+    background-color: #ff4d4d; /* เปลี่ยนเป็นสีแดงตอนเอาเมาส์วาง */
+    transform: scale(1.1);     /* ขยายขนาดขึ้นเล็กน้อย */
+}
+
+/* ตัวฟอร์มด้านใน */
+.default-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;            /* สำคัญ: ให้ฟอร์มกางเต็มความกว้างของกล่องขาว */
+    align-items: center;    /* จัด input และ button ให้อยู่กึ่งกลาง */
+}
+
+.default-form input {
+    width: 80%;             /* ปรับความกว้างช่องพิมพ์ตามต้องการ */
+    max-width: 300px;
+    padding: 10px;
+}
+
+.default-form textarea {
+    width: 80%;             /* ปรับความกว้างช่องพิมพ์ตามต้องการ */
+    max-width: 300px;
+    padding: 10px;
+}
+
+/* ตัวคลุมชั้นนอกสุด ทำหน้าที่จัดกึ่งกลาง */
+.form-page-wrapper {
+    display: flex;
+    justify-content: center; /* กึ่งกลางแนวนอน */
+    align-items: center;     /* กึ่งกลางแนวตั้ง */
+    width: 100%;             /* กว้างเต็มพื้นที่ */
+    min-height: 100vh;      /* สูงเท่ากับความสูงหน้าจอ */
+    background-color: #f4f7f6; /* ใส่สีพื้นหลังเฉพาะหน้านี้ได้เลย */
+}
+
+.form-container {
+    display: flex;          /* ต้องใส่ display: flex เพื่อให้สั่งกึ่งกลางได้ */
+    flex-direction: column; /* จัดเนื้อหาข้างใน (H2, Form, P) เป็นแนวตั้ง */
+    align-items: center;    /* จัดเนื้อหาทุกอย่างในกล่องขาวให้ "อยู่กึ่งกลาง" */
+    
+    background-color: white;
+    padding: 50px;          /* เพิ่ม padding ให้กล่องดูใหญ่และโปร่งขึ้น */
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    width: 60%; 
+    max-width: 600px;       /* เพิ่ม max-width เพื่อไม่ให้มันกางกว้างเกินไปในจอคอม */
+    text-align: center;
+}
+
+.image-preview {
+    display: None
 }
 
 .status_open { background-color: #d4edda; color: #155724; }
