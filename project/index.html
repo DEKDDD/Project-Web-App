@@ -35,7 +35,17 @@
           placeholder="Search by keywords..."
           class="search_input"
         />
-        <button class="button_filter">Filter</button>
+        <button id = "openFilter" class="button_filter">Filter</button>
+          <div id="filterMenu" class="side-menu">
+            <div class="menu-content">
+              <span class="close-btn">&times;</span>
+              <h3>ตัวเลือกการกรอง</h3>
+              <hr>
+              <label><input type="checkbox"> หมวดหมู่ A</label><br>
+              <label><input type="checkbox"> หมวดหมู่ B</label><br>
+              <button class="apply-btn">ตกลง</button>
+            </div>
+          </div>
       </section>
 
       <h2>Available Activity</h2>

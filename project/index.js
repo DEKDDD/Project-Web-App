@@ -26,6 +26,27 @@ function filterActivities(status) {
 btn_available.addEventListener('click', () => filterActivities('open'));
 btn_close.addEventListener('click', () => filterActivities('close'));
 
+const openBtn = document.getElementById('openFilter');
+const filterMenu = document.getElementById('filterMenu');
+const closeBtn = document.querySelector('.close-btn');
+
+// เปิดเมนู
+openBtn.onclick = () => {
+  filterMenu.classList.add('active');
+};
+
+// ปิดเมนู
+closeBtn.onclick = () => {
+  filterMenu.classList.remove('active');
+};
+
+// ปิดเมื่อกดข้างนอกเมนู (Optional)
+window.onclick = (event) => {
+  if (event.target == filterMenu) {
+    filterMenu.classList.remove('active');
+  }
+};
+
 // เรียกตอนโหลดหน้า
 document.addEventListener("DOMContentLoaded", () => {
     loadEvents();
