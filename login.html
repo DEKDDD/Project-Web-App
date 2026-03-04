@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="index.html" class="index-link">
+      <div class="logo">CE Web</div>
+      </a>
+      <div class="nav_auth">
+        <a href="login.html">
+          <button class="button_login">Log in</button>
+        </a>
+        <a href="signup.html">
+          <button class="button_signup">Sign Up</button>
+        </a>
+      </div>
+    </nav>
+    <div class="form-page-wrapper">
+        <div class="form-container">
+            <h2>เข้าสู่ระบบ</h2>
+                <form class="default-form" onsubmit="handleLogin(event)">
+                    <input type="email" placeholder="Email" id="email" required>
+                    <input type="password" placeholder="Password" id="password" required>
+                    <button type="submit">เข้าสู่ระบบ</button>
+                </form>
+            <p>ยังไม่มีบัญชี? <a href="signup.html">สมัครสมาชิก</a></p>
+        </div>
+    </div>
+    <a href="index.html" class="close-button">X</a>
+    <script src="api.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
