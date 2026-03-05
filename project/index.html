@@ -44,8 +44,15 @@
               <span class="close-btn">&times;</span>
               <h3>ตัวเลือกการกรอง</h3>
               <hr>
-              <label><input type="checkbox"> หมวดหมู่ A</label><br>
-              <label><input type="checkbox"> หมวดหมู่ B</label><br>
+              <h4>สถานะกิจกรรม</h4>
+              <label><input type="checkbox" class="status-checkbox" value="open"> กิจกรรมที่เปิดรับอยู่</label><br>
+              <label><input type="checkbox" class="status-checkbox" value="close"> กิจกรรมที่ปิดรับแล้ว</label><br>
+              <hr>
+              <h4>ประเภทของกิจกรรม</h4>
+              <label><input type="checkbox" class="category-checkbox" value="กีฬา"> กีฬา</label><br>
+              <label><input type="checkbox" class="category-checkbox" value="ดนตรี"> ดนตรี</label><br>
+              <label><input type="checkbox" class="category-checkbox" value="อาหาร"> อาหาร</label><br>
+              <br>
               <button class="apply-btn">ตกลง</button>
             </div>
           </div>
@@ -53,7 +60,7 @@
 
       <h2>Available Activity</h2>
       <div id="event-list" class="activity_grid">
-        <a href="detail.html" class="activity_card_link">
+        <a href="detail.html" class="activity_card_link" data-category="กีฬา" data-status="open">
           <div class="activity_card">
             <img src="cat.jpg" alt="cat" class="activity_img" />
             <div class="activity_info">
@@ -63,7 +70,27 @@
             </div>
           </div>
         </a>
-
+        <a href="detail.html" class="activity_card_link" data-category="ดนตรี" data-status="open">
+          <div class="activity_card">
+            <img src="cat.jpg" alt="cat" class="activity_img" />
+            <div class="activity_info">
+              <h3>Activity Name</h3>
+              <p>Description Activity Card...</p>
+              <span class="status status_open">Status: Open</span>
+            </div>
+          </div>
+        </a>
+        <a href="detail.html" class="activity_card_link" data-category="อาหาร" data-status="open">
+          <div class="activity_card">
+            <img src="cat.jpg" alt="cat" class="activity_img" />
+            <div class="activity_info">
+              <h3>Activity Name</h3>
+              <p>Description Activity Card...</p>
+              <span class="status status_open">Status: Open</span>
+            </div>
+          </div>
+        </a>
+        <a href="detail.html" class="activity_card_link" data-category="กีฬา" data-status="close">
         <div class="activity_card">
           <img src="cat.jpg" alt="cat" class="activity_img" />
           <div class="activity_info">
@@ -72,7 +99,27 @@
             <span class="status status_close">Status: Close</span>
           </div>
         </div>
-
+        </a>
+        <a href="detail.html" class="activity_card_link" data-category="ดนตรี" data-status="close">
+        <div class="activity_card">
+          <img src="cat.jpg" alt="cat" class="activity_img" />
+          <div class="activity_info">
+            <h3>Activity Name</h3>
+            <p>Description Activity Card...</p>
+            <span class="status status_close">Status: Close</span>
+          </div>
+        </div>
+        </a>
+        <a href="detail.html" class="activity_card_link" data-category="อาหาร" data-status="close">
+        <div class="activity_card">
+          <img src="cat.jpg" alt="cat" class="activity_img" />
+          <div class="activity_info">
+            <h3>Activity Name</h3>
+            <p>Description Activity Card...</p>
+            <span class="status status_close">Status: Close</span>
+          </div>
+        </div>
+        </a>
       </div>
     </main>
     <script src="index.js"></script>
