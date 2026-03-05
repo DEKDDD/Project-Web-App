@@ -291,14 +291,21 @@ button:hover{
 
 .detail-container {
     display: flex;          /* ต้องใส่ display: flex เพื่อให้สั่งกึ่งกลางได้ */
-    flex-direction: column; /* จัดเนื้อหาข้างใน (H2, Form, P) เป็นแนวตั้ง */
-    align-items: center;    /* จัดเนื้อหาทุกอย่างในกล่องขาวให้ "อยู่กึ่งกลาง" */
+    flex-direction: row; /* จัดเนื้อหาข้างใน (H2, Form, P) เป็นแนวตั้ง */
+    align-items: start;    /* จัดเนื้อหาทุกอย่างในกล่องขาวให้ "อยู่กึ่งกลาง" */
     background-color: white;
     padding: 50px;          /* เพิ่ม padding ให้กล่องดูใหญ่และโปร่งขึ้น */
     border-radius: 30px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     width: 60%; 
     text-align: center;
+    gap: 40px;
+}
+
+.activity-detail{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
 }
 
 .form-container {

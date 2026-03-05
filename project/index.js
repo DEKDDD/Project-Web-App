@@ -2,7 +2,6 @@
 
 const btn_available = document.getElementById('btn_available');
 const btn_close = document.getElementById('btn_close');
-const cards = document.querySelectorAll('.activity_card_link');
 
 
 function filterActivities(status) {
@@ -21,6 +20,37 @@ function filterActivities(status) {
         }
     });
 }
+
+const applyBtn = document.querySelector('.apply-btn');
+const cards = document.querySelectorAll('.activity_card_link');
+
+applyBtn.addEventListener('click', () => {
+    // 1. ดึงค่าจาก Checkbox ที่ถูกติ๊ก (แบ่งตามกลุ่ม)
+    const selectedStatuses = Array.from(document.querySelectorAll('.status-checkbox:checked'))
+                                  .map(cb => cb.value);
+    
+    const selectedCategories = Array.from(document.querySelectorAll('.category-checkbox:checked'))
+                                     .map(cb => cb.value);
+
+    // 2. วนลูปตรวจสอบ Card ทุกใบ
+    cards.forEach(card => {
+        const cardStatus = card.getAttribute('data-status');
+        const cardCategory = card.getAttribute('data-category');
+
+        // ตรวจสอบเงื่อนไขสถานะ (ถ้าไม่เลือกเลย = ผ่านทั้งหมด)
+        const isStatusMatch = selectedStatuses.length === 0 || selectedStatuses.includes(cardStatus);
+        
+        // ตรวจสอบเงื่อนไขหมวดหมู่ (ถ้าไม่เลือกเลย = ผ่านทั้งหมด)
+        const isCategoryMatch = selectedCategories.length === 0 || selectedCategories.includes(cardCategory);
+
+        // 3. แสดงผลเฉพาะ Card ที่ผ่าน "ทั้งสองเงื่อนไข"
+        if (isStatusMatch && isCategoryMatch) {
+            card.style.display = 'flex';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+});
 
 
 btn_available.addEventListener('click', () => filterActivities('open'));
