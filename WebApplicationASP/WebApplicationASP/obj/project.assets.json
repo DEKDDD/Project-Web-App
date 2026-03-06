@@ -2430,19 +2430,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\User\\.nuget\\packages\\": {}
+    "C:\\Users\\ASUS\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\CODE\\WEB\\Project-Web-App\\WebApplicationASP\\WebApplicationASP\\WebApplicationASP.csproj",
+      "projectUniqueName": "C:\\Users\\ASUS\\OneDrive\\Desktop\\Web Project\\Project-Web-App\\WebApplicationASP\\WebApplicationASP\\WebApplicationASP.csproj",
       "projectName": "WebApplicationASP",
-      "projectPath": "C:\\CODE\\WEB\\Project-Web-App\\WebApplicationASP\\WebApplicationASP\\WebApplicationASP.csproj",
-      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\CODE\\WEB\\Project-Web-App\\WebApplicationASP\\WebApplicationASP\\obj\\",
+      "projectPath": "C:\\Users\\ASUS\\OneDrive\\Desktop\\Web Project\\Project-Web-App\\WebApplicationASP\\WebApplicationASP\\WebApplicationASP.csproj",
+      "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ASUS\\OneDrive\\Desktop\\Web Project\\Project-Web-App\\WebApplicationASP\\WebApplicationASP\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net10.0"
