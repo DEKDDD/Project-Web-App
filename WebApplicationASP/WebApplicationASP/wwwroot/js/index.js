@@ -1,25 +1,24 @@
 
+// const openBtn = document.getElementById('openFilter');
+// const filterMenu = document.getElementById('filterMenu');
+// const closeBtn = document.querySelector('.close-btn');
 
-const btn_available = document.getElementById('btn_available');
-const btn_close = document.getElementById('btn_close');
+// // เปิดเมนู
+// openBtn.onclick = (e) => {
+//     filterMenu.classList.add('active');
+// };
 
+// // ปิดเมนู
+// closeBtn.onclick = () => {
+//     filterMenu.classList.remove('active');
+// };
 
-function filterActivities(status) {
-    cards.forEach(card => {
-
-        const cardStatus = card.querySelector('.status').textContent.toLowerCase();
-
-        if (status === 'open' && cardStatus.includes('open')) {
-            card.style.display = 'flex';
-        }
-        else if (status === 'close' && cardStatus.includes('close')) {
-            card.style.display = 'flex';
-        }
-        else {
-            card.style.display = 'none';
-        }
-    });
-}
+// // ปิดเมื่อกดข้างนอกเมนู (Optional)
+// window.onclick = (event) => {
+//     if (event.target == filterMenu) {
+//         filterMenu.classList.remove('active');
+//     }
+// };
 
 const applyBtn = document.querySelector('.apply-btn');
 const cards = document.querySelectorAll('.activity_card_link');
@@ -51,31 +50,6 @@ applyBtn.addEventListener('click', () => {
         }
     });
 });
-
-
-btn_available.addEventListener('click', () => filterActivities('open'));
-btn_close.addEventListener('click', () => filterActivities('close'));
-
-const openBtn = document.getElementById('openFilter');
-const filterMenu = document.getElementById('filterMenu');
-const closeBtn = document.querySelector('.close-btn');
-
-// เปิดเมนู
-openBtn.onclick = () => {
-    filterMenu.classList.add('active');
-};
-
-// ปิดเมนู
-closeBtn.onclick = () => {
-    filterMenu.classList.remove('active');
-};
-
-// ปิดเมื่อกดข้างนอกเมนู (Optional)
-// window.onclick = (event) => {
-//     if (event.target == filterMenu) {
-//         filterMenu.classList.remove('active');
-//     }
-// };
 
 // เรียกตอนโหลดหน้า
 document.addEventListener("DOMContentLoaded", () => {
@@ -220,17 +194,29 @@ function toggleProfileMenu(event) {
         menu.style.display = "block";
     }
 }
-window.addEventListener("click", function (event) {
+// window.addEventListener("click", function (event) {
 
-    // -------- profile menu --------
-    const menu = document.getElementById("profileMenu");
-    menu.style.display = "none";
+//     // -------- profile menu --------
+//     const menu = document.getElementById("profileMenu");
+//     menu.style.display = "none";
 
-    // -------- filter menu --------
-    const filterMenu = document.getElementById("filterMenu");
+//     // -------- filter menu --------
+//     const filterMenu = document.getElementById("filterMenu");
 
-    if (event.target === filterMenu) {
-        filterMenu.classList.remove("active");
+//     if (event.target === filterMenu) {
+//         filterMenu.classList.remove("active");
+//     }
+
+// });
+
+function toggleFilterMenu(event) {
+    event.stopPropagation(); // สำคัญมาก
+
+    const filtermenu = document.getElementById("filterMenu");
+
+    if (filtermenu.style.display === "block") {
+        filtermenu.style.display = "none";
+    } else {
+        filtermenu.style.display = "block";
     }
-
-});
+}
