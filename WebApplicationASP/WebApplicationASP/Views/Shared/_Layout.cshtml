@@ -1,50 +1,63 @@
-﻿<!DOCTYPE html>
+﻿<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - WebApplicationASP</title>
-    <script type="importmap"></script>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/WebApplicationASP.styles.css" asp-append-version="true" />
-</head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">WebApplicationASP</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+    <title>@ViewData["Title"]</title>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2569 - WebApplicationASP - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <link rel="stylesheet" href="~/css/style.css" />
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <a asp-controller="Home" asp-action="Index" class="index-link">
+        <div class="logo">CE Web</div>
+    </a>
+
+    <div class="nav_auth">
+    @if (User.Identity.IsAuthenticated)
+    {
+        <div class="profile-dropdown">
+
+            <button class="button_auth" onclick="toggleProfileMenu(event)">
+                @User.Identity.Name
+            </button>
+
+            <div id="profileMenu" class="profile-menu">
+
+                <a asp-controller="User" asp-action="Profile">
+                    My Profile
+                </a>
+
+                <form method="post" asp-controller="Auth" asp-action="Logout">
+                    <button type="submit">Logout</button>
+                </form>
+
+            </div>
+
         </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+    }
+    else
+    {
+        <a asp-controller="Auth" asp-action="Login">
+            <button class="button_auth">Log in</button>
+        </a>
+
+        <a asp-controller="Auth" asp-action="Signup">
+            <button class="button_auth">Sign Up</button>
+        </a>
+    }
+    
+    </div>
+</nav>
+
+<!-- เนื้อหาของแต่ละหน้า -->
+@RenderBody()
+
+
+<script src="~/js/index.js"></script>
+
 </body>
 </html>

@@ -1,10 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
 using WebApplicationASP.Models;
 using System.Linq;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using System.Security.Claims;
 
-[ApiController]
-[Route("api/[controller]")]
-public class AuthController : ControllerBase
+[Route("auth")]
+public class AuthController : Controller
 {
     private readonly AppDbContext _context;
 
@@ -12,6 +14,19 @@ public class AuthController : ControllerBase
     {
         _context = context;
     }
+
+    [HttpGet("login")]
+    public IActionResult LoginPage()
+    {
+        return View("login");
+    }
+
+    [HttpGet("signup")]
+    public IActionResult Signup()
+    {
+        return View();
+    }
+
 
     // ✅ Signup
    [HttpPost("signup")]
@@ -35,9 +50,8 @@ public class AuthController : ControllerBase
         return Ok("Signup successful");
     }
 
-    // ✅ Login
     [HttpPost("login")]
-    public IActionResult Login([FromBody] Login login)
+    public async Task<IActionResult> Login([FromBody] Login login)
     {
         var user = _context.Users.FirstOrDefault(u =>
             u.Email == login.Email && u.Password == login.Password);
@@ -45,6 +59,34 @@ public class AuthController : ControllerBase
         if (user == null)
             return Unauthorized("Invalid email or password");
 
+        var claims = new List<Claim>
+        {
+            new Claim(ClaimTypes.Name, user.Username),
+            new Claim(ClaimTypes.Email, user.Email),
+            new Claim("UserId", user.Id.ToString())
+        };
+
+        var claimsIdentity = new ClaimsIdentity(
+            claims,
+            CookieAuthenticationDefaults.AuthenticationScheme);
+
+        var authProperties = new AuthenticationProperties
+        {
+            IsPersistent = true
+        };
+
+        await HttpContext.SignInAsync(
+            CookieAuthenticationDefaults.AuthenticationScheme,
+            new ClaimsPrincipal(claimsIdentity),
+            authProperties);
+
         return Ok("Login successful");
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Logout()
+    {
+        await HttpContext.SignOutAsync();
+        return RedirectToAction("Index", "Home");
     }
 }
