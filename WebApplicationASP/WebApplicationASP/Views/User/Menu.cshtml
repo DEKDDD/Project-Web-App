@@ -1,0 +1,23 @@
+@{
+    ViewData["Title"] = "Profile";
+}
+
+<div class="form-page-wrapper">
+    <div class="form-container">
+
+        <h2>Profile</h2>
+
+        <div class="default-form">
+
+            <a asp-controller="User" asp-action="Profile">
+                <button>My Information</button>
+            </a>
+
+            <form method="post" asp-controller="Auth" asp-action="Logout">
+                <button type="submit">Logout</button>
+            </form>
+
+        </div>
+
+    </div>
+</div>

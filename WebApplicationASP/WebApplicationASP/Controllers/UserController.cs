@@ -1,27 +1,16 @@
-// using Microsoft.AspNetCore.Mvc;
-// using WebApplicationASP.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
-// public class UserController : Controller
-// {
-//     private readonly AppDbContext _context;
+[Authorize]
+public class UserController : Controller
+{
+    public IActionResult Menu()
+    {
+        return View();
+    }
 
-//     public UserController(AppDbContext context)
-//     {
-//         _context = context;
-//     }
-
-//     public IActionResult CreateTestUser()
-//     {
-//         var user = new User
-//         {
-//             Username = "tester01",
-//             Email = "tester01@gmail.com",
-//             Password = "tester01"
-//         };
-
-//         _context.Users.Add(user);
-//         _context.SaveChanges();
-
-//         return Content("User created!");
-//     }
-// }
+    public IActionResult Profile()
+    {
+        return Content("Profile page coming soon");
+    }
+}

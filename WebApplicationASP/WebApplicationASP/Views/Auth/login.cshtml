@@ -1,0 +1,35 @@
+@{
+    ViewData["Title"] = "Login";
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/style.css" />
+</head>
+
+<body>
+    <div class="form-page-wrapper">
+        <div class="form-container">
+            <h2>เข้าสู่ระบบ</h2>
+
+            <form class="default-form" onsubmit="handleLogin(event)">
+                <input type="email" placeholder="Email" id="email" required />
+                <input type="password" placeholder="Password" id="password" required />
+                <button type="submit">เข้าสู่ระบบ</button>
+            </form>
+
+            <p>ยังไม่มีบัญชี? 
+                <a asp-controller="Auth" asp-action="Signup">สมัครสมาชิก</a>
+            </p>
+        </div>
+    </div>
+
+    <a asp-controller="Home" asp-action="Index" class="close-button">X</a>
+
+    <script src="~/js/index.js"></script>
+</body>
+</html>
