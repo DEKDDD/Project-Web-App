@@ -22,27 +22,45 @@
 
 const applyBtn = document.querySelector('.apply-btn');
 const cards = document.querySelectorAll('.activity_card_link');
+const logicSwitch = document.getElementById('logic-switch'); // ดึง ID สวิตช์มา
 
 applyBtn.addEventListener('click', () => {
-    // 1. ดึงค่าจาก Checkbox ที่ถูกติ๊ก (แบ่งตามกลุ่ม)
+    // 1. ดึงค่าจาก Checkbox
     const selectedStatuses = Array.from(document.querySelectorAll('.status-checkbox:checked'))
         .map(cb => cb.value);
 
     const selectedCategories = Array.from(document.querySelectorAll('.category-checkbox:checked'))
         .map(cb => cb.value);
 
-    // 2. วนลูปตรวจสอบ Card ทุกใบ
+    // เช็กสถานะสวิตช์: true = AND (ต้องครบ), false = OR (อย่างใดอย่างหนึ่ง)
+    const isAndMode = logicSwitch.checked;
+
+    // 2. วนลูปตรวจสอบ Card
     cards.forEach(card => {
         const cardStatus = card.getAttribute('data-status');
-        const cardCategory = card.getAttribute('data-category');
+        const cardCategories = card.getAttribute('data-category') 
+            ? card.getAttribute('data-category').split(',') 
+            : [];
 
-        // ตรวจสอบเงื่อนไขสถานะ (ถ้าไม่เลือกเลย = ผ่านทั้งหมด)
+        // เงื่อนไขสถานะ (เหมือนเดิม)
         const isStatusMatch = selectedStatuses.length === 0 || selectedStatuses.includes(cardStatus);
 
-        // ตรวจสอบเงื่อนไขหมวดหมู่ (ถ้าไม่เลือกเลย = ผ่านทั้งหมด)
-        const isCategoryMatch = selectedCategories.length === 0 || selectedCategories.includes(cardCategory);
+        // --- ส่วนที่แก้ไข: เงื่อนไขหมวดหมู่ ---
+        let isCategoryMatch = false;
 
-        // 3. แสดงผลเฉพาะ Card ที่ผ่าน "ทั้งสองเงื่อนไข"
+        if (selectedCategories.length === 0) {
+            isCategoryMatch = true; // ถ้าไม่เลือกเลย ให้ผ่าน
+        } else {
+            if (isAndMode) {
+                // โหมด AND: ทุกค่าที่เลือก (selected) ต้องมีอยู่ใน cardCategories
+                isCategoryMatch = selectedCategories.every(selected => cardCategories.includes(selected));
+            } else {
+                // โหมด OR: ขอแค่บางค่าที่เลือก (selected) มีอยู่ใน cardCategories (Code เดิมของคุณ)
+                isCategoryMatch = selectedCategories.some(selected => cardCategories.includes(selected));
+            }
+        }
+
+        // 3. แสดงผลเฉพาะ Card ที่ผ่าน "ทั้งสองกลุ่มเงื่อนไข"
         if (isStatusMatch && isCategoryMatch) {
             card.style.display = 'flex';
         } else {
