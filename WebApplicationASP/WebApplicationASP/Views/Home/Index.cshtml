@@ -45,7 +45,7 @@
       <h2>Available Activity</h2>
       <div id="event-list" class="activity_grid">
         @foreach(var activity in Model){
-          <a href="detail.html" class="activity_card_link" data-category="@string.Join(" ", activity.Category)" data-status="@activity.Status">
+          <a href="detail.html" class="activity_card_link" data-category="@string.Join(",", activity.Category)" data-status="@activity.Status">
           <div class="activity_card">
             <img src="@activity.ImageUrl" alt="cat" class="activity_img" />
             <div class="activity_info">
@@ -53,7 +53,6 @@
               <p>@activity.Description</p>
               <p>เหลือที่ว่าง <span style="color: blue;">@(activity.Number - activity.Member.Count)</span> คน</p>
               <span class="status status_open">ประเภท: @string.Join(",", activity.Category)</span>
-              <br>
               <span class="status status_open">Status: @activity.Status</span>
             </div>
           </div>
