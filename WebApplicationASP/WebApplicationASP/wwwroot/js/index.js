@@ -20,11 +20,11 @@
 //     }
 // };
 
-const applyBtn = document.querySelector('.apply-btn');
-const cards = document.querySelectorAll('.activity_card_link');
+const cards = document.querySelectorAll('.activity_card_container');
 const logicSwitch = document.getElementById('logic-switch'); // ดึง ID สวิตช์มา
+const searchInput = document.getElementById('search-input');
 
-applyBtn.addEventListener('click', () => {
+function filterData() {
     // 1. ดึงค่าจาก Checkbox
     const selectedStatuses = Array.from(document.querySelectorAll('.status-checkbox:checked'))
         .map(cb => cb.value);
@@ -34,6 +34,7 @@ applyBtn.addEventListener('click', () => {
 
     // เช็กสถานะสวิตช์: true = AND (ต้องครบ), false = OR (อย่างใดอย่างหนึ่ง)
     const isAndMode = logicSwitch.checked;
+    const searchText = searchInput.value.toLowerCase().trim();
 
     // 2. วนลูปตรวจสอบ Card
     cards.forEach(card => {
@@ -60,94 +61,34 @@ applyBtn.addEventListener('click', () => {
             }
         }
 
+        const cardTitle = card.querySelector('.card-title').innerText.toLowerCase();
+        const cardDescription = card.querySelector('.card-description').innerText.toLowerCase();
+
+        const isSearchMatch = searchText === "" || cardTitle.includes(searchText) || cardDescription.includes(searchText);
+
         // 3. แสดงผลเฉพาะ Card ที่ผ่าน "ทั้งสองกลุ่มเงื่อนไข"
-        if (isStatusMatch && isCategoryMatch) {
+        if (isStatusMatch && isCategoryMatch && isSearchMatch) {
             card.style.display = 'flex';
         } else {
             card.style.display = 'none';
         }
     });
+}
+
+searchInput.addEventListener('input', () => {
+    filterData()
 });
 
-// เรียกตอนโหลดหน้า
-document.addEventListener("DOMContentLoaded", () => {
-    loadEvents();
+logicSwitch.addEventListener('change', () => {
+    filterData()
 });
 
-async function loadEvents() {
-    // try {
-    //     const events = await getEvents(); // มาจาก api.js
-    //     renderEvents(events);
-    // } catch (err) {
-    //     console.error("โหลดกิจกรรมล้มเหลว:", err);
-    //     document.getElementById("event-list").innerHTML =
-    //         "<p>ไม่สามารถโหลดกิจกรรมได้</p>";
-    // }
-}
-
-function renderEvents(events) {
-    const container = document.getElementById("event-list");
-    container.innerHTML = "";
-
-    if (!events || events.length === 0) {
-        container.innerHTML = "<p>ยังไม่มีกิจกรรม</p>";
-        return;
+document.addEventListener('change', (e) => {
+    if (e.target.classList.contains('status-checkbox') || 
+        e.target.classList.contains('category-checkbox')) {
+        filterData();
     }
-
-    events.forEach(event => {
-
-        const isFull = event.currentParticipants >= event.maxParticipants;
-        const isExpired = new Date(event.date) < new Date();
-        const isClosed = isFull || isExpired;
-
-        const statusClass = isClosed ? "status_close" : "status_open";
-        const statusText = isClosed ? "Status: Close" : "Status: Open";
-
-        const cardHTML = `
-            ${!isClosed ? `
-            <a href="detail.html?id=${event.id}" class="activity_card_link">
-            ` : ""}
-            
-            <div class="activity_card">
-                <img src="${event.imageUrl || 'cat.jpg'}" 
-                     alt="${event.title}" 
-                     class="activity_img" />
-
-                <div class="activity_info">
-                    <h3>${event.title}</h3>
-                    <p>${truncateText(event.description, 80)}</p>
-                    <span class="status ${statusClass}">
-                        ${statusText}
-                    </span>
-                </div>
-            </div>
-
-            ${!isClosed ? `</a>` : ""}
-        `;
-
-        container.innerHTML += cardHTML;
-    });
-}
-
-// ตัดข้อความไม่ให้ยาวเกิน
-function truncateText(text, maxLength) {
-    if (!text) return "";
-    return text.length > maxLength
-        ? text.substring(0, maxLength) + "..."
-        : text;
-}
-
-async function handleJoin(id) {
-    const res = await joinEvent(id);
-
-    if (res.ok) {
-        alert("เข้าร่วมสำเร็จ");
-        loadEvents();
-    } else {
-        const msg = await res.text();
-        alert(msg);
-    }
-}
+});
 
 async function handleLogin(event) {
     event.preventDefault();
