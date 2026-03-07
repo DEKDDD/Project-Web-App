@@ -1,0 +1,56 @@
+@{
+    ViewData["Title"] = "New Activity";
+}
+@model Activity
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/style.css" />
+</head>
+<body>
+    
+    <div class="form-page-wrapper">
+        <div class="form-container">
+            <h2>สร้างกิจกรรมใหม่</h2>
+            <form class="default-form" method="post" enctype="multipart/form-data" asp-controller="Activity" asp-action="HandleAddActivity">
+                <p>ชื่อกิจกรรม</p>
+                <input type="text" placeholder="ชื่อกิจกรรม" id="title" name="Title" required>
+                <p>รายละเอียดกิจกรรม</p>
+                <textarea placeholder="รายละเอียด" id="description" name="Description" required></textarea>
+                <p>ระยะเวลาเปิดรับ</p>
+                <input type="datetime-local"  id="date" name="ExpireDate" required>
+                <p>จำนวนคนสูงสุด</p>
+                <input type="number" placeholder="จำนวนคนสูงสุด" id="maxParticipants" name="Number" required>
+                <fieldset class="category-container">
+                    <legend>ประเภทของกิจกรรม</legend>
+                    <label for="sport" class = "category-item">
+                    <input type="checkbox" id="sport" name="Category" value="sport">กีฬา
+                    </label>
+                    <label for="music" class = "category-item">
+                    <input type="checkbox" id="music" name="Category" value="music">ดนตรี
+                    </label>
+                    <label for="food" class = "category-item">
+                    <input type="checkbox" id="food" name="Category" value="food">อาหาร
+                    </label>
+                </fieldset>
+                <div class="upload-section">
+                    <p>รูปภาพกิจกรรม</p>
+                    <input type="file" id="image" accept="image/*" name="ImageFile" onchange="previewImage(event)">
+                    <div class="image-preview">
+                        <img id="preview-img" src="#" alt="Preview">
+                    </div>
+                </div>
+
+                <button type="submit">สร้างกิจกรรม</button>
+            </form>
+        </div>
+    </div>
+    <a asp-controller="Home" asp-action="Index" class="close-button">X</a>
+    <script src="api.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
