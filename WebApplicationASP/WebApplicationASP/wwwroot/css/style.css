@@ -117,6 +117,8 @@ button:hover{
     letter-spacing: 2px;
 }
 
+
+
 /* สไตล์ของเมนู */
 .side-menu {
   position: fixed;
@@ -167,6 +169,66 @@ button:hover{
 /* ตกแต่งปุ่มปิดและเนื้อหาข้างใน */
 .menu-content { padding: 20px; }
 .close-btn { cursor: pointer; font-size: 25px; float: right; }
+
+/* คอนเทนเนอร์ */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 80px; /* ขยายความกว้างนิดหน่อยเพื่อให้พอดีตัวอักษร */
+  height: 30px;
+  margin: 10px 0;
+}
+
+.switch input { opacity: 0; width: 0; height: 0; }
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #b8b8b8;
+  transition: .4s;
+  border-radius: 20px;
+}
+
+/* ส่วนของตัวอักษร */
+.slider:after {
+  content: "OR"; /* ข้อความตอนปิด */
+  color: rgb(0, 0, 0);
+  display: block;
+  position: absolute;
+  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 70%; /* วางไว้ฝั่งขวาตอนปิด */
+  font-size: 15px;
+  font-weight: bold;
+}
+
+/* ตัวปุ่มกลมๆ */
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 22px; width: 22px;
+  left: 4px; bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+  z-index: 2; /* ให้ปุ่มอยู่ทับตัวอักษร */
+}
+
+/* เมื่อสวิตช์เปิด (Checked) */
+input:checked + .slider {
+  background-color: #000000;
+}
+
+input:checked + .slider:after {
+  content: "AND"; /* เปลี่ยนเป็นคำว่า ON */
+  left: 30%;    /* ย้ายมาฝั่งซ้าย */
+  color: rgb(255, 255, 255);
+}
+
+input:checked + .slider:before {
+  transform: translateX(50px);
+}
 
 .index-link {
   cursor: pointer; /* เปลี่ยนเมาส์เป็นรูปมือ */
