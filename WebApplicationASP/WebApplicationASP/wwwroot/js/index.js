@@ -153,20 +153,6 @@ function toggleProfileMenu(event) {
         menu.style.display = "block";
     }
 }
-// window.addEventListener("click", function (event) {
-
-//     // -------- profile menu --------
-//     const menu = document.getElementById("profileMenu");
-//     menu.style.display = "none";
-
-//     // -------- filter menu --------
-//     const filterMenu = document.getElementById("filterMenu");
-
-//     if (event.target === filterMenu) {
-//         filterMenu.classList.remove("active");
-//     }
-
-// });
 
 function toggleFilterMenu(event) {
     event.stopPropagation(); // สำคัญมาก
@@ -177,5 +163,21 @@ function toggleFilterMenu(event) {
         filtermenu.style.display = "none";
     } else {
         filtermenu.style.display = "block";
+    }
+}
+
+window.onclick = function(event) {
+    const profileMenu = document.getElementById("profileMenu");
+    const filterMenu = document.getElementById("filterMenu");
+
+    // ตรวจสอบว่าจุดที่คลิก (event.target) ไม่ใช่ตัวเมนู และไม่ใช่ปุ่มกด
+    // ถ้าคลิกข้างนอก ให้สั่งปิดเมนู (display = "none")
+
+    if (profileMenu.style.display === "block" && !profileMenu.contains(event.target)) {
+        profileMenu.style.display = "none";
+    }
+
+    if (filterMenu.style.display === "block" && !filterMenu.contains(event.target)) {
+        filterMenu.style.display = "none";
     }
 }
