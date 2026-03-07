@@ -962,5 +962,5 @@ C:\Users\User\Desktop\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\De
 C:\Users\User\Desktop\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\WebApplicationASP.pdb
 C:\Users\User\Desktop\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\WebApplicationASP.genruntimeconfig.cache
 C:\Users\User\Desktop\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\ref\WebApplicationASP.dll
-C:\Users\User\Desktop\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\compressed\of3xh6c06l-{0}-yx97q83po1-yx97q83po1.gz
-C:\Users\User\Desktop\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\compressed\pw5qyhc1rx-{0}-5cnsxls1iq-5cnsxls1iq.gz
+C:\Users\User\Desktop\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\compressed\of3xh6c06l-{0}-wsvmg7dd56-wsvmg7dd56.gz
+C:\Users\User\Desktop\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\compressed\pw5qyhc1rx-{0}-dbl7qbz8e6-dbl7qbz8e6.gz

@@ -131,7 +131,7 @@ button:hover{
   background-color: white;
   box-shadow: -2px 0 5px rgba(0,0,0,0.2);
   transition: 0.3s; /* ทำให้มันเลื่อนแบบลื่นๆ */
-  z-index: 1000;
+  z-index: 999;
 }
 
 .side-menu a {
