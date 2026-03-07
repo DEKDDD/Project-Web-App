@@ -21,6 +21,7 @@
           type="text"
           placeholder="Search by keywords..."
           class="search_input"
+          id="search-input"
         />
         <button id="openFilter" class="button_filter" onclick="toggleFilterMenu(event)">Filter</button>
           <div id="filterMenu" class="side-menu">
@@ -36,30 +37,31 @@
               <label><input type="checkbox" class="category-checkbox" value="sport"> กีฬา</label><br>
               <label><input type="checkbox" class="category-checkbox" value="music"> ดนตรี</label><br>
               <label><input type="checkbox" class="category-checkbox" value="food"> อาหาร</label><br>
+              <h4>ลักษณะการกรอง</h4>
               <label class="switch">
                 <input type="checkbox" id="logic-switch">
                 <span class="slider"></span>
               </label>
-              <button class="apply-btn">ตกลง</button>
             </div>
           </div>
       </section>
 
-      <h2>Available Activity</h2>
+      <h2>Activity List</h2>
       <div id="event-list" class="activity_grid">
         @foreach(var activity in Model){
-          <a href="detail.html" class="activity_card_link" data-category="@string.Join(",", activity.Category)" data-status="@activity.Status">
+          <div class="activity_card_container" data-category="@string.Join(",", activity.Category)" data-status="@activity.Status">
           <div class="activity_card">
-            <img src="@activity.ImageUrl" alt="cat" class="activity_img" />
+            <img src="@activity.ImageUrl" class="activity_img" onerror="this.src='/images/No Image.png';" />
             <div class="activity_info">
-              <h3>@activity.Title</h3>
-              <p>@activity.Description</p>
+              <h3 class="card-title">@activity.Title</h3>
+              <p class="card-description">@activity.Description</p>
               <p>เหลือที่ว่าง <span style="color: blue;">@(activity.Number - activity.Member.Count)</span> คน</p>
-              <span class="status status_open">ประเภท: @string.Join(",", activity.Category)</span>
+              <span class="category">ประเภท: @string.Join(", ", activity.Category)</span>
               <span class="status status_open">Status: @activity.Status</span>
             </div>
+            <a href="detail.html" class="card-link"></a>
           </div>
-        </a>
+        </div>
         }
       </div>
     </main>

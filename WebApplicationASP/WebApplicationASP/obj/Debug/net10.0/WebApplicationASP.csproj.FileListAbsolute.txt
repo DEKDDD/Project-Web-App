@@ -888,9 +888,7 @@ C:\Users\User\Desktop\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\De
 C:\Users\User\Desktop\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\scopedcss\bundle\WebApplicationASP.styles.css
 C:\Users\User\Desktop\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\scopedcss\projectbundle\WebApplicationASP.bundle.scp.css
 C:\Users\User\Desktop\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\compressed\v5nbw2ab2x-{0}-b9sayid5wm-b9sayid5wm.gz
-C:\Users\User\Desktop\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\compressed\of3xh6c06l-{0}-r1a47v87rj-r1a47v87rj.gz
 C:\Users\User\Desktop\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\compressed\twssh1f8jq-{0}-61n19gt1b8-61n19gt1b8.gz
-C:\Users\User\Desktop\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\compressed\pw5qyhc1rx-{0}-ndnsjvatmc-ndnsjvatmc.gz
 C:\Users\User\Desktop\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\compressed\nfyykekqwn-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
 C:\Users\User\Desktop\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\compressed\5e2xubz1k6-{0}-t1cqhe9u97-t1cqhe9u97.gz
 C:\Users\User\Desktop\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\compressed\vrzpgu2kct-{0}-c2jlpeoesf-c2jlpeoesf.gz
@@ -964,3 +962,5 @@ C:\Users\User\Desktop\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\De
 C:\Users\User\Desktop\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\WebApplicationASP.pdb
 C:\Users\User\Desktop\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\WebApplicationASP.genruntimeconfig.cache
 C:\Users\User\Desktop\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\ref\WebApplicationASP.dll
+C:\Users\User\Desktop\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\compressed\of3xh6c06l-{0}-yx97q83po1-yx97q83po1.gz
+C:\Users\User\Desktop\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\compressed\pw5qyhc1rx-{0}-5cnsxls1iq-5cnsxls1iq.gz
