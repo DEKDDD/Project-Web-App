@@ -1,6 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@model List<Activity>
 <!doctype html>
 <html lang="en">
 <head>
@@ -13,7 +14,7 @@
 <body>
     <main class="container">
       <section class="search_section">
-        <a href="create_act.html">
+        <a asp-controller="Activity" asp-action="AddActivity">
         <button class="button_new">New</button>
         </a>
         <input
@@ -32,9 +33,9 @@
               <label><input type="checkbox" class="status-checkbox" value="close"> กิจกรรมที่ปิดรับแล้ว</label><br>
               <hr>
               <h4>ประเภทของกิจกรรม</h4>
-              <label><input type="checkbox" class="category-checkbox" value="กีฬา"> กีฬา</label><br>
-              <label><input type="checkbox" class="category-checkbox" value="ดนตรี"> ดนตรี</label><br>
-              <label><input type="checkbox" class="category-checkbox" value="อาหาร"> อาหาร</label><br>
+              <label><input type="checkbox" class="category-checkbox" value="sport"> กีฬา</label><br>
+              <label><input type="checkbox" class="category-checkbox" value="music"> ดนตรี</label><br>
+              <label><input type="checkbox" class="category-checkbox" value="food"> อาหาร</label><br>
               <br>
               <button class="apply-btn">ตกลง</button>
             </div>
@@ -43,66 +44,19 @@
 
       <h2>Available Activity</h2>
       <div id="event-list" class="activity_grid">
-        <a href="detail.html" class="activity_card_link" data-category="กีฬา" data-status="open">
+        @foreach(var activity in Model){
+          <a href="detail.html" class="activity_card_link" data-category="@activity.Category" data-status="@activity.Status">
           <div class="activity_card">
-            <img src="cat.jpg" alt="cat" class="activity_img" />
+            <img src="@activity.ImageUrl" alt="cat" class="activity_img" />
             <div class="activity_info">
-              <h3>Activity Name</h3>
-              <p>Description Activity Card...</p>
-              <span class="status status_open">Status: Open</span>
+              <h3>@activity.Title</h3>
+              <p>@activity.Description</p>
+              <p>เหลือที่ว่าง <span style="color: blue;">@(activity.Number - activity.Member.Count)</span> คน</p>
+              <span class="status status_open">Status: @activity.Status</span>
             </div>
           </div>
         </a>
-        <a href="detail.html" class="activity_card_link" data-category="ดนตรี" data-status="open">
-          <div class="activity_card">
-            <img src="cat.jpg" alt="cat" class="activity_img" />
-            <div class="activity_info">
-              <h3>Activity Name</h3>
-              <p>Description Activity Card...</p>
-              <span class="status status_open">Status: Open</span>
-            </div>
-          </div>
-        </a>
-        <a href="detail.html" class="activity_card_link" data-category="อาหาร" data-status="open">
-          <div class="activity_card">
-            <img src="cat.jpg" alt="cat" class="activity_img" />
-            <div class="activity_info">
-              <h3>Activity Name</h3>
-              <p>Description Activity Card...</p>
-              <span class="status status_open">Status: Open</span>
-            </div>
-          </div>
-        </a>
-        <a href="detail.html" class="activity_card_link" data-category="กีฬา" data-status="close">
-        <div class="activity_card">
-          <img src="cat.jpg" alt="cat" class="activity_img" />
-          <div class="activity_info">
-            <h3>Activity Name</h3>
-            <p>Description Activity Card...</p>
-            <span class="status status_close">Status: Close</span>
-          </div>
-        </div>
-        </a>
-        <a href="detail.html" class="activity_card_link" data-category="ดนตรี" data-status="close">
-        <div class="activity_card">
-          <img src="cat.jpg" alt="cat" class="activity_img" />
-          <div class="activity_info">
-            <h3>Activity Name</h3>
-            <p>Description Activity Card...</p>
-            <span class="status status_close">Status: Close</span>
-          </div>
-        </div>
-        </a>
-        <a href="detail.html" class="activity_card_link" data-category="อาหาร" data-status="close">
-        <div class="activity_card">
-          <img src="cat.jpg" alt="cat" class="activity_img" />
-          <div class="activity_info">
-            <h3>Activity Name</h3>
-            <p>Description Activity Card...</p>
-            <span class="status status_close">Status: Close</span>
-          </div>
-        </div>
-        </a>
+        }
       </div>
     </main>
 

@@ -1,24 +1,30 @@
-// using System.Diagnostics;
-// using Microsoft.AspNetCore.Mvc;
-// using WebApplicationASP.Models;
+using System.Diagnostics;
+using Microsoft.AspNetCore.Mvc;
+using WebApplicationASP.Models;
 
-// namespace WebApplicationASP.Controllers;
+namespace WebApplicationASP.Controllers;
 
-// public class HomeController : Controller
-// {
-//     public IActionResult Index()
-//     {
-//         return View();
-//     }
+public class HomeController : Controller
+{
+    private readonly AppDbContext _context;
+    public HomeController(AppDbContext context)
+    {
+        _context = context;
+    }
+    public IActionResult Index()
+    {
+        var activities = _context.Activities.ToList();
+        return View(activities);
+    }
 
-//     public IActionResult Privacy()
-//     {
-//         return View();
-//     }
+    public IActionResult Privacy()
+    {
+        return View();
+    }
 
-//     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-//     public IActionResult Error()
-//     {
-//         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-//     }
-// }
+    // [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+    // public IActionResult Error()
+    // {
+    //     return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+    // }
+}
