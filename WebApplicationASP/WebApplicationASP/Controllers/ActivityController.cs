@@ -43,6 +43,10 @@ namespace WebApplicationASP.Controllers
 
                 activity.ImageUrl = "/images/" + fileName;
             }
+            else
+            {
+                activity.ImageUrl = "/images/default.jpg";
+            }
 
             _context.Activities.Add(new_activity);
             await _context.SaveChangesAsync();
