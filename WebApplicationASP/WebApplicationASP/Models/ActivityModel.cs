@@ -13,6 +13,6 @@ namespace WebApplicationASP.Models
         public string Status { get; set; }
         public string ImageUrl { get; set; }
         public List<string> Member { get; set; }
-
+        public string Host { get; set; }
     }
 }

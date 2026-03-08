@@ -1,71 +1,130 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+  ViewData["Title"] = "Home Page";
+
+  // เพิ่มฟังก์ชันแปลงคำเป็นอีโมจิตรงนี้ครับ
+  string GetCategoryWithEmoji(string category)
+  {
+    var c = category.Trim().ToLower();
+    if (c == "sport") return "กีฬา ⚽";
+    if (c == "music") return "ดนตรี 🎵 ";
+    if (c == "food") return "อาหาร 🍔";
+    return "ทั่วไป 💬"; // ถ้าไม่มีในเงื่อนไข
+  }
 }
 @model List<Activity>
 <!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" href="~/css/style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>@ViewData["Title"]</title>
+  <link rel="stylesheet" href="~/css/style.css" />
 </head>
 
 <body>
-    <main class="container">
-      <section class="search_section">
-        <a asp-controller="Activity" asp-action="AddActivity">
+  <main class="container">
+    <section class="search_section">
+      <a asp-controller="Activity" asp-action="AddActivity">
         <button class="button_new">New</button>
-        </a>
-        <input
-          type="text"
-          placeholder="Search by keywords..."
-          class="search_input"
-          id="search-input"
-        />
-        <button id="openFilter" class="button_filter" onclick="toggleFilterMenu(event)">Filter</button>
-          <div id="filterMenu" class="side-menu">
-            <div class="menu-content">
-              <span class="close-btn" onclick="toggleFilterMenu(event)">&times;</span>
-              <h3>ตัวเลือกการกรอง</h3>
-              <hr>
-              <h4>สถานะกิจกรรม</h4>
-              <label><input type="checkbox" class="status-checkbox" value="open"> กิจกรรมที่เปิดรับอยู่</label><br>
-              <label><input type="checkbox" class="status-checkbox" value="close"> กิจกรรมที่ปิดรับแล้ว</label><br>
-              <hr>
-              <h4>ประเภทของกิจกรรม</h4>
-              <label><input type="checkbox" class="category-checkbox" value="sport"> กีฬา</label><br>
-              <label><input type="checkbox" class="category-checkbox" value="music"> ดนตรี</label><br>
-              <label><input type="checkbox" class="category-checkbox" value="food"> อาหาร</label><br>
-              <h4>ลักษณะการกรอง</h4>
-              <label class="switch">
-                <input type="checkbox" id="logic-switch">
-                <span class="slider"></span>
-              </label>
-            </div>
-          </div>
-      </section>
+      </a>
+      <input type="text" placeholder="Search by keywords..." class="search_input" id="search-input" />
+      <button id="openFilter" class="button_filter" onclick="toggleFilterMenu(event)">Filter</button>
+      <div id="filterMenu" class="side-menu">
+        <div class="menu-content">
+          <span class="close-btn" onclick="toggleFilterMenu(event)">&times;</span>
+          <h3>ตัวเลือกการกรอง</h3>
+          <hr>
+          <h4>สถานะกิจกรรม</h4>
+          <label><input type="checkbox" class="status-checkbox" value="open"> กิจกรรมที่เปิดรับอยู่</label><br>
+          <label><input type="checkbox" class="status-checkbox" value="close"> กิจกรรมที่ปิดรับแล้ว</label><br>
+          <hr>
+          <h4>ประเภทของกิจกรรม</h4>
+          <label><input type="checkbox" class="category-checkbox" value="sport"> กีฬา</label><br>
+          <label><input type="checkbox" class="category-checkbox" value="music"> ดนตรี</label><br>
+          <label><input type="checkbox" class="category-checkbox" value="food"> อาหาร</label><br>
+          <h4>ลักษณะการกรอง</h4>
+          <label class="switch">
+            <input type="checkbox" id="logic-switch">
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+    </section>
 
-      <h2>Activity List</h2>
-      <div id="event-list" class="activity_grid">
-        @foreach(var activity in Model){
-          <div class="activity_card_container" data-category="@string.Join(",", activity.Category)" data-status="@activity.Status">
+    <h2>Activity List</h2>
+    <div id="event-list" class="activity_grid">
+      @foreach (var activity in Model)
+      {
+        <div class="activity_card_container" data-category="@string.Join(",", activity.Category)"
+             data-status="@activity.Status" data-id="@activity.Id" onclick="openModal(this)" style="cursor: pointer;">
+
           <div class="activity_card">
             <img src="@activity.ImageUrl" class="activity_img" onerror="this.src='/images/No Image.png';" />
             <div class="activity_info">
               <h3 class="card-title">@activity.Title</h3>
               <p class="card-description">@activity.Description</p>
               <p>เหลือที่ว่าง <span style="color: blue;">@(activity.Number - activity.Member.Count)</span> คน</p>
-              <span class="category">ประเภท: @string.Join(", ", activity.Category)</span>
-              <span class="status status_open">Status: @activity.Status</span>
+              <div class="card-tags">
+                <span class="category">ประเภท: @string.Join(", ", activity.Category.Select(c =>
+                                                                GetCategoryWithEmoji(c)))</span>
+                  <span class="status @(activity.Status == "open" ? "status_open" : "status_close")">Status:
+                    @activity.Status</span>
+                  </div>
+                </div>
+              </div>
             </div>
-            <a href="detail.html" class="card-link"></a>
-          </div>
+          }
         </div>
+      </main>
+
+      <div class="activity-container">
+        @foreach (var item in Model)
+        {
+          <div class="card" data-id="@item.Id" onclick="openModal(this)">
+          </div>
         }
       </div>
-    </main>
 
-    <script src="~/js/index.js"></script>
-</body>
-</html>
+      <div id="customModal" class="custom-modal">
+        <div class="custom-modal-content">
+          <span class="custom-close-btn" onclick="closeModal()">&times;</span>
+          <img id="modalImage" src=""
+               style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 15px;"
+               onerror="this.src='/images/No Image.png';" />
+          <h3 id="modalTitle" style="margin-top: 0; margin-bottom: 5px;">ชื่อกิจกรรม</h3>
+          <p style="margin-top: 0; color: #666; font-size: 0.9em;"><strong>Host:</strong> <span id="modalHost"></span></p>
+          <hr>
+          <p><strong>รายละเอียด:</strong> <span id="modalDescription"></span></p>
+          <p><strong>วันที่ปิดรับสมัคร:</strong> <span id="modalExpireDate"></span></p>
+          <p><strong>ประเภท:</strong> <span id="modalCategory"></span></p>
+          <p>
+            <strong>สมัครแล้ว:</strong> <span id="modalMemberCount"></span>/<span id="modalmaxParticipants"></span> คน
+            <button id="toggleMembersBtn" onclick="toggleMembers()"
+                    style="font-size: 0.8em; margin-left: 10px; cursor: pointer; border: 1px solid #ccc; background-color: #eee; border-radius: 4px; padding: 2px 8px;">ดูรายชื่อ</button>
+          </p>
+          <div id="membersListContainer"
+               style="display: none; background-color: #f9f9f9; padding: 10px; border-radius: 5px; margin-top: -10px; margin-bottom: 10px; max-height: 100px; overflow-y: auto;">
+            <ul id="modalMembersList" style="margin: 0; padding-left: 20px; font-size: 0.9em; color: #555;"></ul>
+          </div>
+          <p><strong>คงเหลือ:</strong> <span id="modalEmptySeats" style="color: blue;"></span> ที่</p>
+          <p><strong>สถานะ:</strong> <span id="modalStatus" style="font-weight: normal; color: black;"></span></p>
+
+          <div style="margin-top: 20px; text-align: center;">
+            <button id="joinActivityBtn" onclick="joinActivity()"
+                    style="padding: 10px 20px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; width: 100%; font-size: 16px; font-weight: bold;">
+              Join
+            </button>
+
+            <a id="editActivityBtn" href="#"
+               style="display: none; flex: 1; padding: 10px 20px; background-color: #ffc107; color: black; text-decoration: none; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; font-weight: bold;">
+              ✏️ แก้ไขกิจกรรม
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <script src="~/js/index.js"></script>
+    </body>
+
+  </html>

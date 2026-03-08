@@ -293,6 +293,8 @@ input:checked + .slider:before {
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     margin-bottom: 70px;
     position: relative;
+    display: flex;
+    flex-direction: column;
     
 }
 .activity_card_container {
@@ -336,6 +338,7 @@ input:checked + .slider:before {
     padding: 15px;
     display: flex;
     flex-direction: column;
+    flex-grow: 1; /* สั่งให้เนื้อหายืดเต็มพื้นที่ที่เหลือ */
 }
 
 
@@ -543,3 +546,52 @@ input:checked + .slider:before {
     background: #f5f5f5;
 }
 
+/* พื้นหลังมืดๆ ทับหน้าเว็บ */
+.custom-modal {
+    display: none; /* เริ่มต้นให้ซ่อนไว้ */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); 
+}
+
+/* ตัวกล่องป๊อปอัป */
+.custom-modal-content {
+    background-color: #fefefe;
+    margin: 10% auto; /* ให้อยู่ตรงกลาง */
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    position: relative;
+    max-height: 75vh; /* จำกัดความสูงไม่เกิน 75% ของหน้าจอ */
+    overflow-y: auto; /* ถ้าเนื้อหายาวเกิน ให้โชว์แถบเลื่อน (Scrollbar) อัตโนมัติ */
+}
+
+/* ปุ่มกากบาทปิด */
+.custom-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.custom-close-btn:hover {
+    color: #000;
+}
+
+/* คลาสใหม่สำหรับควบคุมให้ Tag อยู่ล่างสุด */
+.card-tags {
+    margin-top: auto; /* Flexbox ที่จะดันตัวเองลงไปล่างสุดเสมอ */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
