@@ -1,0 +1,101 @@
+@{
+    ViewData["Title"] = "Edit Activity";
+}
+@model WebApplicationASP.Models.Activity
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/style.css" />
+</head>
+<body>
+    <div class="form-page-wrapper">
+        <div class="form-container">
+            <h2>แก้ไขกิจกรรม</h2>
+            
+            <form id="editForm" class="default-form" method="post" enctype="multipart/form-data" asp-controller="Activity" asp-action="EditActivity">
+                
+                <input type="hidden" asp-for="Id" />
+                <input type="hidden" asp-for="Host" />
+                <input type="hidden" id="activityStatus" asp-for="Status" />
+                <input type="hidden" asp-for="ImageUrl" />
+
+                <p>ชื่อกิจกรรม</p>
+                <input type="text" placeholder="ชื่อกิจกรรม" asp-for="Title" required>
+
+                <p>รายละเอียดกิจกรรม</p>
+                <textarea placeholder="รายละเอียด" asp-for="Description" required></textarea>
+
+                <p>ระยะเวลาเปิดรับ</p>
+                <input type="datetime-local" name="ExpireDate" value="@Model.ExpireDate.ToString("yyyy-MM-ddTHH:mm")" required>
+
+                <p>จำนวนคนสูงสุด</p>
+                <input type="number" placeholder="จำนวนคนสูงสุด" asp-for="Number" required>
+
+                <fieldset class="category-container">
+                    <legend>ประเภทของกิจกรรม</legend>
+                    <label for="sport" class="category-item">
+                        <input type="checkbox" id="sport" name="Category" value="sport" @(Model.Category != null && Model.Category.Contains("sport") ? "checked" : "")>กีฬา
+                    </label>
+                    <label for="music" class="category-item">
+                        <input type="checkbox" id="music" name="Category" value="music" @(Model.Category != null && Model.Category.Contains("music") ? "checked" : "")>ดนตรี
+                    </label>
+                    <label for="food" class="category-item">
+                        <input type="checkbox" id="food" name="Category" value="food" @(Model.Category != null && Model.Category.Contains("food") ? "checked" : "")>อาหาร
+                    </label>
+                </fieldset>
+
+                <div class="upload-section">
+                    <p>รูปภาพกิจกรรม (อัปโหลดใหม่เพื่อเปลี่ยนรูป)</p>
+                    <input type="file" id="image" accept="image/*" name="ImageFile" onchange="previewImage(event)">
+                    <div class="image-preview">
+                        <img id="preview-img" src="@Model.ImageUrl" alt="Preview" style="display: block;">
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 10px; margin-top: 20px;">
+                    <button type="submit" style="flex: 1;">บันทึกการแก้ไข</button>
+                    
+                    @if(Model.Status != "close")
+                    {
+                        <button type="button" onclick="closeActivity()" style="flex: 1; background-color: #dc3545; color: white; border: none; border-radius: 5px; cursor: pointer;">ปิดรับสมัคร</button>
+                    }
+                    else
+                    {
+                        <button type="button" disabled style="flex: 1; background-color: #6c757d; color: white; border: none; border-radius: 5px; cursor: not-allowed;">ปิดรับสมัครแล้ว</button>
+                    }
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <a asp-controller="Home" asp-action="Index" class="close-button">X</a>
+
+    <script>
+        // ฟังก์ชันพรีวิวรูปภาพ
+        function previewImage(event) {
+            var reader = new FileReader();
+            reader.onload = function(){
+                var output = document.getElementById('preview-img');
+                output.src = reader.result;
+                output.style.display = 'block';
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        }
+
+        // ฟังก์ชันเมื่อกดปุ่มปิดรับสมัคร
+        function closeActivity() {
+            if(confirm("คุณแน่ใจหรือไม่ว่าต้องการ ปิดรับสมัคร กิจกรรมนี้? (ปิดแล้วจะไม่สามารถเปิดใหม่ได้)")) {
+                // เปลี่ยนค่า Status ที่ซ่อนไว้ให้เป็น close แล้วสั่ง Submit ฟอร์ม
+                document.getElementById('activityStatus').value = "close";
+                document.getElementById('editForm').submit();
+            }
+        }
+    </script>
+    <script src="~/js/api.js"></script>
+    <script src="~/js/main.js"></script>
+</body>
+</html>
