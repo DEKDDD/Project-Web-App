@@ -237,7 +237,6 @@ C:\CODE\WEB\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.
 C:\CODE\WEB\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\scopedcss\bundle\WebApplicationASP.styles.css
 C:\CODE\WEB\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\scopedcss\projectbundle\WebApplicationASP.bundle.scp.css
 C:\CODE\WEB\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\compressed\twssh1f8jq-{0}-61n19gt1b8-61n19gt1b8.gz
-C:\CODE\WEB\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\compressed\nfyykekqwn-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
 C:\CODE\WEB\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\compressed\5e2xubz1k6-{0}-t1cqhe9u97-t1cqhe9u97.gz
 C:\CODE\WEB\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\compressed\vrzpgu2kct-{0}-c2jlpeoesf-c2jlpeoesf.gz
 C:\CODE\WEB\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\compressed\y42iebuo2f-{0}-sejl45xvog-sejl45xvog.gz
@@ -311,8 +310,6 @@ C:\CODE\WEB\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.
 C:\CODE\WEB\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\WebApplicationASP.genruntimeconfig.cache
 C:\CODE\WEB\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\ref\WebApplicationASP.dll
 C:\CODE\WEB\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\compressed\v5nbw2ab2x-{0}-b9sayid5wm-b9sayid5wm.gz
-C:\CODE\WEB\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\compressed\of3xh6c06l-{0}-twaj1bept0-twaj1bept0.gz
-C:\CODE\WEB\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\compressed\pw5qyhc1rx-{0}-qilcqnukb0-qilcqnukb0.gz
 C:\Users\ASUS\OneDrive\Desktop\Web Project\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\WebApplicationASP.csproj.AssemblyReference.cache
 C:\Users\ASUS\OneDrive\Desktop\Web Project\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\rpswa.dswa.cache.json
 C:\Users\ASUS\OneDrive\Desktop\Web Project\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\WebApplicationASP.GeneratedMSBuildEditorConfig.editorconfig
@@ -1398,3 +1395,6 @@ C:\Coding (VSCode)\Kmitl\2 - Web App\Project-Web-App\WebApplicationASP\WebApplic
 C:\Coding (VSCode)\Kmitl\2 - Web App\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\compressed\nfyykekqwn-{0}-3e3kbtbypl-3e3kbtbypl.gz
 C:\Coding (VSCode)\Kmitl\2 - Web App\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\compressed\of3xh6c06l-{0}-nzsnuqssjh-nzsnuqssjh.gz
 C:\Coding (VSCode)\Kmitl\2 - Web App\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\compressed\pw5qyhc1rx-{0}-0dx84y30qo-0dx84y30qo.gz
+C:\CODE\WEB\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\compressed\of3xh6c06l-{0}-1ochwxseo3-1ochwxseo3.gz
+C:\CODE\WEB\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\compressed\nfyykekqwn-{0}-3e3kbtbypl-3e3kbtbypl.gz
+C:\CODE\WEB\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\compressed\pw5qyhc1rx-{0}-0o3hkmsh55-0o3hkmsh55.gz

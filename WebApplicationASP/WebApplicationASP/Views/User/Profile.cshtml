@@ -1,5 +1,17 @@
+@using WebApplicationASP.Models
+@model User
 @{
     ViewData["Title"] = "Profile";
+
+    // ฟังก์ชันช่วยแสดงอีโมจิ (เหมือนหน้า Home)
+    string GetCategoryWithEmoji(string category)
+    {
+        var c = category.Trim().ToLower();
+        if (c == "sport") return "กีฬา ⚽";
+        if (c == "music") return "ดนตรี 🎵 ";
+        if (c == "food") return "อาหาร 🍔";
+        return "ทั่วไป 💬";
+    }
 }
 
 <!doctype html>
@@ -12,122 +24,136 @@
 </head>
 
 <body>
-    <div class="profile-page-wrapper">
-        <div class="profile-section">
-            <img src="cat.jpg" alt="cat" class="profile_img"/>
-            <h1 class="username">@User.Identity.Name</h1>
+    <div class="profile-page-wrapper" style="padding: 20px;">
+        @* ส่วนหัวโปรไฟล์ *@
+        <div class="profile-section" style="margin-bottom: 40px; display: flex; align-items: center; gap: 20px;">
+            <img src="@(string.IsNullOrEmpty(Model.ProfileImage) ? "/images/cat.jpg" : Model.ProfileImage)" alt="profile" class="profile_img" style="width: 150px; height: 150px; border-radius: 50%; border: 4px solid #000; object-fit: cover;"/>
+            <h1 class="username">@Model.Username</h1>
+            <div class="upload-section" style="margin-top: 10px;">
+                @* ปุ่มกดเพื่อเลือกไฟล์ *@
+                <button type="button" onclick="document.getElementById('fileInput').click()" 
+                        style="padding: 5px 15px; border-radius: 20px; border: 2px solid #000; background: #fff; cursor: pointer; font-weight: bold;">
+                    📷 เปลี่ยนรูปโปรไฟล์
+                </button>
+    
+                @* Input รับไฟล์ที่ซ่อนไว้ *@
+                <input type="file" id="fileInput" accept="image/*" style="display: none;" onchange="uploadProfileImage(this)" />
+    
+                @* ข้อความแจ้งสถานะ *@
+                <span id="uploadStatus" style="font-size: 0.8em; margin-left: 10px; color: #666;"></span>
+            </div>
         </div>
+
+        @* --- ส่วนกิจกรรมที่เข้าร่วม (Joined Activities) --- *@
         <h2 class="section-title">กิจกรรมที่ลง</h2>
-        <div class="profile-container">
-            <a href="detail.html" class="profile_activity_card_link">
-                <div class="activity_card">
-                    <img src="cat.jpg" alt="cat" class="activity_img" />
-                    <div class="activity_info">
-                    <h3>Activity Name</h3>
-                    <p>Description Activity Card...</p>
-                    <span class="status status_open">Status: Open</span>
+        <div class="activity_grid">
+            @if (ViewBag.JoinedActivities != null && ((List<Activity>)ViewBag.JoinedActivities).Any())
+            {
+                @foreach (var activity in (List<Activity>)ViewBag.JoinedActivities)
+                {
+                    <div class="activity_card_container" data-id="@activity.Id" onclick="openModal(this)" style="cursor: pointer;">
+                        <div class="activity_card">
+                            <img src="@activity.ImageUrl" class="activity_img" onerror="this.src='/images/No Image.png';" />
+                            <div class="activity_info">
+                                <h3 class="card-title">@activity.Title</h3>
+                                <p class="card-description">@activity.Description</p>
+                                <div class="card-tags">
+                                    <span class="category">ประเภท: @string.Join(", ", activity.Category.Select(c => GetCategoryWithEmoji(c)))</span>
+                                    <span class="status @(activity.Status == "open" ? "status_open" : "status_close")">Status: @activity.Status</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </a>
-            <a href="detail.html" class="profile_activity_card_link">
-                <div class="activity_card">
-                    <img src="cat.jpg" alt="cat" class="activity_img" />
-                    <div class="activity_info">
-                    <h3>Activity Name</h3>
-                    <p>Description Activity Card...</p>
-                    <span class="status status_open">Status: Open</span>
-                    </div>
-                </div>
-            </a>
-            <a href="detail.html" class="profile_activity_card_link">
-                <div class="activity_card">
-                    <img src="cat.jpg" alt="cat" class="activity_img" />
-                    <div class="activity_info">
-                    <h3>Activity Name</h3>
-                    <p>Description Activity Card...</p>
-                    <span class="status status_open">Status: Open</span>
-                    </div>
-                </div>
-            </a>
-            <a href="detail.html" class="profile_activity_card_link">
-                <div class="activity_card">
-                    <img src="cat.jpg" alt="cat" class="activity_img" />
-                    <div class="activity_info">
-                    <h3>Activity Name</h3>
-                    <p>Description Activity Card...</p>
-                    <span class="status status_open">Status: Open</span>
-                    </div>
-                </div>
-            </a>
-            <a href="detail.html" class="profile_activity_card_link">
-                <div class="activity_card">
-                    <img src="cat.jpg" alt="cat" class="activity_img" />
-                    <div class="activity_info">
-                    <h3>Activity Name</h3>
-                    <p>Description Activity Card...</p>
-                    <span class="status status_open">Status: Open</span>
-                    </div>
-                </div>
-            </a>
+                }
+            }
+            else
+            {
+                <p style="grid-column: 1/-1; text-align: center; color: gray; padding: 20px;">ยังไม่มีกิจกรรมที่เข้าร่วม</p>
+            }
         </div>
-        <h2 class="section-title">กิจกรรมที่สร้าง</h2>
-        <div class="profile-container">
-            <a href="detail.html" class="profile_activity_card_link">
-                <div class="activity_card">
-                    <img src="cat.jpg" alt="cat" class="activity_img" />
-                    <div class="activity_info">
-                    <h3>Activity Name</h3>
-                    <p>Description Activity Card...</p>
-                    <span class="status status_open">Status: Open</span>
+
+        @* --- ส่วนกิจกรรมที่สร้างเอง (Created Activities) --- *@
+        <h2 class="section-title" style="margin-top: 50px;">กิจกรรมที่สร้าง</h2>
+        <div class="activity_grid">
+            @if (ViewBag.CreatedActivities != null && ((List<Activity>)ViewBag.CreatedActivities).Any())
+            {
+                @foreach (var activity in (List<Activity>)ViewBag.CreatedActivities)
+                {
+                    <div class="activity_card_container" data-id="@activity.Id" onclick="openModal(this)" style="cursor: pointer;">
+                        <div class="activity_card">
+                            <img src="@activity.ImageUrl" class="activity_img" onerror="this.src='/images/No Image.png';" />
+                            <div class="activity_info">
+                                <h3 class="card-title">@activity.Title</h3>
+                                <p class="card-description">@activity.Description</p>
+                                <div class="card-tags">
+                                    <span class="category">ประเภท: @string.Join(", ", activity.Category.Select(c => GetCategoryWithEmoji(c)))</span>
+                                    <span class="status @(activity.Status == "open" ? "status_open" : "status_close")">Status: @activity.Status</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </a>
-            <a href="detail.html" class="profile_activity_card_link">
-                <div class="activity_card">
-                    <img src="cat.jpg" alt="cat" class="activity_img" />
-                    <div class="activity_info">
-                    <h3>Activity Name</h3>
-                    <p>Description Activity Card...</p>
-                    <span class="status status_open">Status: Open</span>
-                    </div>
-                </div>
-            </a>
-            <a href="detail.html" class="profile_activity_card_link">
-                <div class="activity_card">
-                    <img src="cat.jpg" alt="cat" class="activity_img" />
-                    <div class="activity_info">
-                    <h3>Activity Name</h3>
-                    <p>Description Activity Card...</p>
-                    <span class="status status_open">Status: Open</span>
-                    </div>
-                </div>
-            </a>
-            <a href="detail.html" class="profile_activity_card_link">
-                <div class="activity_card">
-                    <img src="cat.jpg" alt="cat" class="activity_img" />
-                    <div class="activity_info">
-                    <h3>Activity Name</h3>
-                    <p>Description Activity Card...</p>
-                    <span class="status status_open">Status: Open</span>
-                    </div>
-                </div>
-            </a>
-            <a href="detail.html" class="profile_activity_card_link">
-                <div class="activity_card">
-                    <img src="cat.jpg" alt="cat" class="activity_img" />
-                    <div class="activity_info">
-                    <h3>Activity Name</h3>
-                    <p>Description Activity Card...</p>
-                    <span class="status status_open">Status: Open</span>
-                    </div>
-                </div>
-            </a>
+                }
+            }
+            else
+            {
+                <p style="grid-column: 1/-1; text-align: center; color: gray; padding: 20px;">ยังไม่ได้สร้างกิจกรรม</p>
+            }
         </div>
-        
     </div>
 
+    @* --- โครงสร้าง Modal (รวม ID ทุกตัวที่ index.js ต้องการเพื่อแก้ Error) --- *@
+    <div id="customModal" class="custom-modal">
+        <div class="custom-modal-content">
+            <span class="custom-close-btn" onclick="closeModal()">&times;</span>
+            
+            <img id="modalImage" src="" style="width: 100%; height: 220px; object-fit: cover; border-radius: 8px; margin-bottom: 15px;" onerror="this.src='/images/No Image.png';" />
+            
+            <h3 id="modalTitle" style="margin-bottom: 5px;"></h3>
+            <p style="color: #666; font-size: 0.9em;"><strong>Host:</strong> <span id="modalHost"></span></p>
+            <hr>
+            
+            <p><strong>รายละเอียด:</strong> <span id="modalDescription"></span></p>
+            <p><strong>วันที่ปิดรับสมัคร:</strong> <span id="modalExpireDate"></span></p>
+            <p><strong>ประเภท:</strong> <span id="modalCategory"></span></p>
+            
+            <p>
+                <strong>สมัครแล้ว:</strong> 
+                <span id="modalMemberCount"></span> / <span id="modalmaxParticipants"></span> คน
+                <button id="toggleMembersBtn" onclick="toggleMembers()" style="font-size: 0.8em; margin-left: 10px; cursor: pointer; padding: 2px 8px;">ดูรายชื่อ</button>
+            </p>
+
+            <div id="membersListContainer" style="display: none; background-color: #f0f0f0; padding: 10px; border-radius: 5px; margin-bottom: 10px; max-height: 120px; overflow-y: auto;">
+                <ul id="modalMembersList" style="margin: 0; padding-left: 20px;"></ul>
+            </div>
+
+            <p><strong>คงเหลือ:</strong> <span id="modalEmptySeats" style="color: blue; font-weight: bold;"></span> ที่</p>
+            <p><strong>สถานะ:</strong> <span id="modalStatus" style="font-weight: bold;"></span></p>
+
+            <div style="margin-top: 20px; display: flex; gap: 10px;">
+                <button id="joinActivityBtn" onclick="joinActivity()" style="flex: 1; padding: 12px; background-color: #28a745; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">Join</button>
+                <a id="editActivityBtn" href="#" style="display: none; flex: 1; padding: 12px; background-color: #ffc107; color: black; text-decoration: none; border-radius: 8px; font-weight: bold; text-align: center;">✏️ แก้ไขกิจกรรม</a>
+            </div>
+        </div>
+    </div>
+
+    @* ปุ่มปิดกลับไปหน้า Home *@
     <a asp-controller="Home" asp-action="Index" class="close-button">X</a>
 
+    @* เรียกใช้ JS ของคุณ *@
     <script src="~/js/index.js"></script>
+
+    @* สคริปต์เสริมเพื่อให้กดปิดข้างนอกหน้าต่างได้แน่นอน *@
+    <script>
+        window.addEventListener('click', function(event) {
+            var modal = document.getElementById('customModal');
+            if (event.target == modal) { 
+                if(typeof closeModal === "function") {
+                    closeModal();
+                } else {
+                    modal.style.display = "none";
+                }
+            }
+        });
+    </script>
 </body>
 </html>

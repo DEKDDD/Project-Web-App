@@ -369,3 +369,46 @@ function toggleMembers() {
         container.style.display = "none"; // ซ่อนรายชื่อ
     }
 }
+
+function uploadProfileImage(input) {
+    if (!input.files || !input.files[0]) return;
+
+    const file = input.files[0];
+    const formData = new FormData();
+    formData.append("profileImage", file);
+
+    const status = document.getElementById('uploadStatus');
+    status.innerText = "กำลังอัพโหลด...";
+
+    fetch('/User/UploadProfileImage', {
+        method: 'POST',
+        body: formData
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                status.innerText = "อัพโหลดสำเร็จ!";
+
+                // 1. เปลี่ยนรูปใหญ่ในหน้า Profile
+                const profileImg = document.querySelector('.profile_img');
+                if (profileImg) profileImg.src = data.newImageUrl;
+
+                // 2. เปลี่ยนรูปจิ๋วใน Navbar ทันที (ไม่ต้องรอ Login ใหม่)
+                const navImg = document.querySelector('.nav-profile-img');
+                if (navImg) {
+                    navImg.src = data.newImageUrl;
+                }
+
+                console.log("Updated Navbar Image to: " + data.newImageUrl);
+
+            } else {
+                status.innerText = "เกิดข้อผิดพลาด: " + data.message;
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            status.innerText = "เชื่อมต่อเซิร์ฟเวอร์ไม่ได้";
+        });
+
+    // --- อย่าเอาโค้ดมาวางตรงนี้ เพราะ data จะมองไม่เห็น (undefined) ---
+}

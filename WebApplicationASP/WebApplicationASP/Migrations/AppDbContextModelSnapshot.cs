@@ -67,7 +67,15 @@ namespace WebApplicationASP.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.PrimitiveCollection<string>("CreatedActivityIds")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.PrimitiveCollection<string>("JoinedActivityIds")
                         .IsRequired()
                         .HasColumnType("TEXT");
 

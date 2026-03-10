@@ -9,5 +9,7 @@ namespace WebApplicationASP.Models
         public string Email { get; set; }
         public string Password { get; set; }
         public string? ProfileImage { get; set; }
+        public List<int> CreatedActivityIds { get; set; } = new();
+        public List<int> JoinedActivityIds { get; set; } = new();
     }
 }

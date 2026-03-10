@@ -2430,19 +2430,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Panit\\.nuget\\packages\\": {}
+    "C:\\Users\\User\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Coding (VSCode)\\Kmitl\\2 - Web App\\Project-Web-App\\WebApplicationASP\\WebApplicationASP\\WebApplicationASP.csproj",
+      "projectUniqueName": "C:\\CODE\\WEB\\Project-Web-App\\WebApplicationASP\\WebApplicationASP\\WebApplicationASP.csproj",
       "projectName": "WebApplicationASP",
-      "projectPath": "C:\\Coding (VSCode)\\Kmitl\\2 - Web App\\Project-Web-App\\WebApplicationASP\\WebApplicationASP\\WebApplicationASP.csproj",
-      "packagesPath": "C:\\Users\\Panit\\.nuget\\packages\\",
-      "outputPath": "C:\\Coding (VSCode)\\Kmitl\\2 - Web App\\Project-Web-App\\WebApplicationASP\\WebApplicationASP\\obj\\",
+      "projectPath": "C:\\CODE\\WEB\\Project-Web-App\\WebApplicationASP\\WebApplicationASP\\WebApplicationASP.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "C:\\CODE\\WEB\\Project-Web-App\\WebApplicationASP\\WebApplicationASP\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Panit\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net10.0"

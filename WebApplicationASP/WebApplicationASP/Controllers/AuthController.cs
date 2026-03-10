@@ -63,6 +63,8 @@ public class AuthController : Controller
         {
             new Claim(ClaimTypes.Name, user.Username),
             new Claim(ClaimTypes.Email, user.Email),
+            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+            new Claim("ProfileImage", user.ProfileImage ?? "/images/default.jpg"),
             new Claim("UserId", user.Id.ToString())
         };
 

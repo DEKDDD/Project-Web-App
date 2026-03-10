@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApplicationASP.Models;
+using System.Security.Claims;
 
 namespace WebApplicationASP.Controllers
 {
@@ -53,10 +54,22 @@ namespace WebApplicationASP.Controllers
 
             _context.Activities.Add(new_activity);
             await _context.SaveChangesAsync();
-
+            var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userIdClaim != null)
+            {
+                var userId = int.Parse(userIdClaim);
+                var user = await _context.Users.FindAsync(userId);
+                if (user != null)
+                {
+                    // 3. เพิ่ม ID กิจกรรมลงใน List ของ User
+                    user.CreatedActivityIds.Add(new_activity.Id);
+                    _context.Users.Update(user);
+                    await _context.SaveChangesAsync();
+                }
+            }
             return RedirectToAction("Index", "Home");
         }
-
+        
         [HttpGet]
         public IActionResult GetActivityDetails(int id)
         {
@@ -106,6 +119,7 @@ namespace WebApplicationASP.Controllers
         public async Task<IActionResult> JoinActivity([FromBody] JoinRequest request)
         {
             // ดึงชื่อคนที่ล็อกอินอยู่
+            var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var currentUsername = User.Identity?.Name;
             if (string.IsNullOrEmpty(currentUsername))
             {
@@ -121,7 +135,7 @@ namespace WebApplicationASP.Controllers
 
             // ถ้า Member ยังเป็น null ให้สร้าง List เปล่ามารองรับ
             if (activity.Member == null) activity.Member = new List<string>();
-
+            
             // เช็คว่าผู้ใช้กด Join ไปแล้วหรือยัง
             if (activity.Member.Contains(currentUsername))
             {
@@ -143,6 +157,16 @@ namespace WebApplicationASP.Controllers
             }
 
             _context.Activities.Update(activity);
+            var userId = int.Parse(userIdClaim);
+            var user = await _context.Users.FindAsync(userId);
+            if (user != null)
+            {
+                if (!user.JoinedActivityIds.Contains(activity.Id))
+                {
+                    user.JoinedActivityIds.Add(activity.Id);
+                    _context.Users.Update(user);
+                }
+            }
             await _context.SaveChangesAsync();
 
             return Json(new { success = true });
