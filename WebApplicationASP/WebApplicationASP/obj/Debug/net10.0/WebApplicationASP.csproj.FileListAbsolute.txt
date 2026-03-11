@@ -1374,8 +1374,6 @@ C:\Coding (VSCode)\Kmitl\2 - Web App\Project-Web-App\WebApplicationASP\WebApplic
 C:\Coding (VSCode)\Kmitl\2 - Web App\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\compressed\ovnxo8y2dx-{0}-9vr69e8ynj-9vr69e8ynj.gz
 C:\Coding (VSCode)\Kmitl\2 - Web App\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\compressed\unsd8zuqmz-{0}-87fc7y1x7t-87fc7y1x7t.gz
 C:\Coding (VSCode)\Kmitl\2 - Web App\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\compressed\sidpf42w5d-{0}-mlv21k5csn-mlv21k5csn.gz
-C:\Coding (VSCode)\Kmitl\2 - Web App\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\compressed\fgbpe2xcoq-{0}-jltfn5houi-jltfn5houi.gz
-C:\Coding (VSCode)\Kmitl\2 - Web App\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\compressed\v5fmw30h8m-{0}-jltfn5houi-jltfn5houi.gz
 C:\Coding (VSCode)\Kmitl\2 - Web App\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\staticwebassets.build.json
 C:\Coding (VSCode)\Kmitl\2 - Web App\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\staticwebassets.build.json.cache
 C:\Coding (VSCode)\Kmitl\2 - Web App\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\staticwebassets.development.json
@@ -1608,10 +1606,12 @@ C:\Users\ASUS\OneDrive\Desktop\Web-Final v\Project-Web-App\WebApplicationASP\Web
 C:\Users\ASUS\OneDrive\Desktop\Web-Final v\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\WebApplicationASP.genruntimeconfig.cache
 C:\Users\ASUS\OneDrive\Desktop\Web-Final v\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\ref\WebApplicationASP.dll
 C:\Users\ASUS\OneDrive\Desktop\Web-Final v\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\compressed\pw5qyhc1rx-{0}-cygz5tyrlh-cygz5tyrlh.gz
-C:\Coding (VSCode)\Kmitl\2 - Web App\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\compressed\of3xh6c06l-{0}-mblx1sv76d-mblx1sv76d.gz
-C:\Coding (VSCode)\Kmitl\2 - Web App\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\compressed\pw5qyhc1rx-{0}-cygz5tyrlh-cygz5tyrlh.gz
 C:\Users\ADMIN\OneDrive\เดสก์ท็อป\WebappProject\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\compressed\nfyykekqwn-{0}-3e3kbtbypl-3e3kbtbypl.gz
 C:\Users\ADMIN\OneDrive\เดสก์ท็อป\WebappProject\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\compressed\of3xh6c06l-{0}-u88m1g8hr6-u88m1g8hr6.gz
 C:\Users\ADMIN\OneDrive\เดสก์ท็อป\WebappProject\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\compressed\pw5qyhc1rx-{0}-hl8q4silr6-hl8q4silr6.gz
 C:\Users\ADMIN\OneDrive\เดสก์ท็อป\WebappProject\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\compressed\fgbpe2xcoq-{0}-q2fb1c0k78-q2fb1c0k78.gz
 C:\Users\ADMIN\OneDrive\เดสก์ท็อป\WebappProject\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\compressed\v5fmw30h8m-{0}-q2fb1c0k78-q2fb1c0k78.gz
+C:\Coding (VSCode)\Kmitl\2 - Web App\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\compressed\of3xh6c06l-{0}-u88m1g8hr6-u88m1g8hr6.gz
+C:\Coding (VSCode)\Kmitl\2 - Web App\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\compressed\pw5qyhc1rx-{0}-hl8q4silr6-hl8q4silr6.gz
+C:\Coding (VSCode)\Kmitl\2 - Web App\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\compressed\fgbpe2xcoq-{0}-q2fb1c0k78-q2fb1c0k78.gz
+C:\Coding (VSCode)\Kmitl\2 - Web App\Project-Web-App\WebApplicationASP\WebApplicationASP\obj\Debug\net10.0\compressed\v5fmw30h8m-{0}-q2fb1c0k78-q2fb1c0k78.gz
