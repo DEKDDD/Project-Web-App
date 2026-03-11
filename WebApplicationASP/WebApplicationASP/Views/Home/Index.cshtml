@@ -56,15 +56,14 @@
     <div id="event-list" class="activity_grid">
       @foreach (var activity in Model)
       {
-        <div class="activity_card_container" data-category="@string.Join(",", activity.Category)"
-             data-status="@activity.Status" data-id="@activity.Id" onclick="openModal(this)" style="cursor: pointer;">
+        <div class="activity_card_container">
 
-          <div class="activity_card">
+          <div class="activity_card" data-id="@activity.Id" onclick="openModal(this)" data-status="@activity.Status" data-category="@string.Join(",", activity.Category)">
             <img src="@activity.ImageUrl" class="activity_img" onerror="this.src='/images/No Image.png';" />
             <div class="activity_info">
               <h3 class="card-title">@activity.Title</h3>
               <p class="card-description">@activity.Description</p>
-              <p>เหลือที่ว่าง <span style="color: blue;">@(activity.Number - activity.Member.Count)</span> คน</p>
+              <p >เหลือที่ว่าง <span class="available-seat">@(activity.Number - activity.Member.Count)</span> คน</p>
               <div class="card-tags">
                 <span class="category">ประเภท: @string.Join(", ", activity.Category.Select(c =>
                                                                 GetCategoryWithEmoji(c)))</span>
@@ -87,42 +86,37 @@
       </div>
 
       <div id="customModal" class="custom-modal">
-        <div class="custom-modal-content">
-          <span class="custom-close-btn" onclick="closeModal()">&times;</span>
-          <img id="modalImage" src=""
-               style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 15px;"
-               onerror="this.src='/images/No Image.png';" />
-          <h3 id="modalTitle" style="margin-top: 0; margin-bottom: 5px;">ชื่อกิจกรรม</h3>
-          <p style="margin-top: 0; color: #666; font-size: 0.9em;"><strong>Host:</strong> <span id="modalHost"></span></p>
-          <hr>
-          <p><strong>รายละเอียด:</strong> <span id="modalDescription"></span></p>
-          <p><strong>วันที่ปิดรับสมัคร:</strong> <span id="modalExpireDate"></span></p>
-          <p><strong>ประเภท:</strong> <span id="modalCategory"></span></p>
-          <p>
-            <strong>สมัครแล้ว:</strong> <span id="modalMemberCount"></span>/<span id="modalmaxParticipants"></span> คน
-            <button id="toggleMembersBtn" onclick="toggleMembers()"
-                    style="font-size: 0.8em; margin-left: 10px; cursor: pointer; border: 1px solid #ccc; background-color: #eee; border-radius: 4px; padding: 2px 8px;">ดูรายชื่อ</button>
-          </p>
-          <div id="membersListContainer"
-               style="display: none; background-color: #f9f9f9; padding: 10px; border-radius: 5px; margin-top: -10px; margin-bottom: 10px; max-height: 100px; overflow-y: auto;">
-            <ul id="modalMembersList" style="margin: 0; padding-left: 20px; font-size: 0.9em; color: #555;"></ul>
-          </div>
-          <p><strong>คงเหลือ:</strong> <span id="modalEmptySeats" style="color: blue;"></span> ที่</p>
-          <p><strong>สถานะ:</strong> <span id="modalStatus" style="font-weight: normal; color: black;"></span></p>
+    <div class="custom-modal-content">
+      <span class="custom-close-btn" onclick="closeModal()">&times;</span>
+      
+      <img id="modalImage" class="modal-banner" src="" onerror="this.src='/images/No Image.png';" />
+      
+      <h3 id="modalTitle" class="modal-title">ชื่อกิจกรรม</h3>
+      <p class="modal-host"><strong>Host:</strong> <span id="modalHost"></span></p>
+      <hr>
+      
+      <p><strong>รายละเอียด:</strong> <span id="modalDescription"></span></p>
+      <p><strong>วันที่ปิดรับสมัคร:</strong> <span id="modalExpireDate"></span></p>
+      <p><strong>ประเภท:</strong> <span id="modalCategory"></span></p>
+      
+      <p>
+        <strong>สมัครแล้ว:</strong> <span id="modalMemberCount"></span>/<span id="modalmaxParticipants"></span> คน
+        <button id="toggleMembersBtn" class="btn-toggle-members" onclick="toggleMembers()">ดูรายชื่อ</button>
+      </p>
 
-          <div style="margin-top: 20px; text-align: center;">
-            <button id="joinActivityBtn" onclick="joinActivity()"
-                    style="padding: 10px 20px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; width: 100%; font-size: 16px; font-weight: bold;">
-              Join
-            </button>
-
-            <a id="editActivityBtn" href="#"
-               style="display: none; flex: 1; padding: 10px 20px; background-color: #ffc107; color: black; text-decoration: none; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; font-weight: bold;">
-              ✏️ แก้ไขกิจกรรม
-            </a>
-          </div>
-        </div>
+      <div id="membersListContainer" class="members-container">
+        <ul id="modalMembersList" class="members-list"></ul>
       </div>
+
+      <p><strong>คงเหลือ:</strong> <span id="modalEmptySeats" class="text-blue"></span> ที่</p>
+      <p><strong>สถานะ:</strong> <span id="modalStatus" class="text-status"></span></p>
+
+      <div class="modal-footer">
+        <button id="joinActivityBtn" class="btn-primary-join" onclick="joinActivity()">Join</button>
+        <a id="editActivityBtn" class="btn-warning-edit" href="#">✏️ แก้ไขกิจกรรม</a>
+      </div>
+    </div>
+  </div>
 
       <script src="~/js/index.js"></script>
     </body>

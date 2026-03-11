@@ -118,6 +118,25 @@ button:hover{
     letter-spacing: 2px;
 }
 
+.button_edit{
+    padding: 5px 15px;
+    border-radius: 20px;
+    border: 2px solid #000;
+    background: #fff;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.file_input {
+    display: none;
+}
+
+.upload_status{
+    font-size: 0.8em;
+    margin-left: 10px;
+    color: #666;
+}
+
 
 
 /* สไตล์ของเมนู */
@@ -169,7 +188,7 @@ button:hover{
 
 /* ตกแต่งปุ่มปิดและเนื้อหาข้างใน */
 .menu-content { padding: 20px; }
-.close-btn { cursor: pointer; font-size: 25px; float: right; }
+.close-btn { cursor: pointer; font-size: 25px; float: right;}
 
 /* คอนเทนเนอร์ */
 .switch {
@@ -264,6 +283,7 @@ input:checked + .slider:before {
     justify-items: center;
 }
 
+
 .profile-container {
   display: flex;
   overflow-x: auto; /* ให้เลื่อนซ้าย-ขวาได้ */
@@ -295,13 +315,201 @@ input:checked + .slider:before {
     position: relative;
     display: flex;
     flex-direction: column;
-    
+    cursor: pointer;
+
 }
+
 .activity_card_container {
     color: inherit;        
     display: flex;
     justify-content: center;        
     width: 100%;
+}
+
+.available-seat{
+    color: blue;
+}
+
+.blank_grid{
+    grid-column: 1/-1;
+    text-align: center;
+    color: gray;
+    padding: 20px;
+}
+
+/* รูปภาพหลักใน Modal */
+.modal-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+/* หัวข้อและข้อมูล Host */
+.modal-title {
+    margin-bottom: 5px;
+}
+
+.modal-host-text {
+    color: #666;
+    font-size: 0.9em;
+}
+
+/* ส่วนของรายชื่อสมาชิก */
+.btn-toggle-list {
+    font-size: 0.8em;
+    margin-left: 10px;
+    cursor: pointer;
+    padding: 2px 8px;
+}
+
+.members-list-container {
+    display: none; /* ควบคุมผ่าน JS เหมือนเดิม */
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    max-height: 120px;
+    overflow-y: auto;
+}
+
+.modal-members-list {
+    margin: 0;
+    padding-left: 20px;
+}
+
+/* สถานะและที่ว่าง */
+.text-remaining {
+    color: blue;
+    font-weight: bold;
+}
+
+.text-status {
+    font-weight: bold;
+}
+
+/* ปุ่มกดด้านล่าง */
+.modal-actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.btn-join {
+    flex: 1;
+    padding: 12px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-edit {
+    display: none; /* ควบคุมผ่าน JS */
+    flex: 1;
+    padding: 12px;
+    background-color: #ffc107;
+    color: black;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* รูปภาพ Banner */
+.modal-banner {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+/* หัวข้อและข้อมูลโฮสต์ */
+.modal-title {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.modal-host {
+  margin-top: 0;
+  color: #666;
+  font-size: 0.9em;
+}
+
+/* ปุ่มดูรายชื่อ */
+.btn-toggle-members {
+  font-size: 0.8em;
+  margin-left: 10px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  background-color: #eee;
+  border-radius: 4px;
+  padding: 2px 8px;
+}
+
+/* กล่องรายชื่อสมาชิก */
+.members-container {
+  display: none; /* คุมเปิด-ปิดด้วย JS */
+  background-color: #f9f9f9;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+  max-height: 100px;
+  overflow-y: auto;
+}
+
+.members-list {
+  margin: 0;
+  padding-left: 20px;
+  font-size: 0.9em;
+  color: #555;
+}
+
+/* ข้อความสถานะ */
+.text-blue {
+  color: blue;
+}
+
+.text-status {
+  font-weight: normal;
+  color: black;
+}
+
+/* ส่วนท้ายและปุ่มดำเนินการ */
+.modal-footer {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.btn-primary-join {
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.btn-warning-edit {
+  display: none; /* คุมเปิด-ปิดด้วย JS */
+  flex: 1;
+  padding: 10px 20px;
+  background-color: #ffc107;
+  color: black;
+  text-decoration: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
 }
 
 .card-link {
@@ -320,7 +528,8 @@ input:checked + .slider:before {
 .activity_img {
     width: 100%;
     height: 200px; 
-    object-fit: cover; 
+    object-fit: cover;
+    max-height: 200px;
 }
 
 .detail_img{
@@ -332,6 +541,7 @@ input:checked + .slider:before {
   height: 170px;
   border-radius: 50%; /* ทำเป็นวงกลม */
   border: 4px solid rgb(0, 0, 0);
+  object-fit: cover;
 }
 
 .activity_info {
@@ -385,7 +595,7 @@ input:checked + .slider:before {
 
     box-shadow: 0 2px 5px rgba(0,0,0,0.3); /* ใส่เงาให้ดูมีมิติ */
     transition: 0.3s;   /* ให้ดูสมูทตอนเอาเมาส์วาง */
-    z-index: 1000;      /* มั่นใจว่าปุ่มจะลอยอยู่เหนือทุกอย่าง */
+    z-index: 998;      /* มั่นใจว่าปุ่มจะลอยอยู่เหนือทุกอย่าง */
 }
 
 .close-button:hover {
@@ -479,6 +689,11 @@ input:checked + .slider:before {
   display: flex;
   align-items: center; /* ให้ชื่ออยู่กึ่งกลางความสูงของวงกลม */
   gap: 20px;
+
+}
+
+.upload-section{
+    margin-top: 10px;
 }
 
 .category-container {
@@ -594,4 +809,77 @@ input:checked + .slider:before {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+}
+
+@media (max-width: 768px) {
+
+
+    .activity_info {
+        padding: 10px;
+    }
+
+    .activity_info p {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .activity_grid{
+        grid-template-columns: 1fr;
+    }
+
+    .activity_card {
+        margin-bottom: 30px;
+        height : 400px;
+        width: 100%;
+    }
+
+    .activity_info {
+    font-size: 12px;
+    }
+
+    .status {
+    font-size: 10px;
+    }
+
+    .category {
+    font-size: 10px;
+}
+    .button_new{
+        width: 80px;
+    }
+
+    .button_filter{
+        width: 90px;
+    }
+
+    .search_section input {
+    flex: 1;
+    min-width: 0;
+}
+    .side-menu {
+    width: 50%;
+}
+    .logo{
+        font-size: 30px;
+    }
+
+    .button_auth{
+        font-size: 18px;
+        height : 50px;
+    }
+
+    .navbar{
+        padding: 16px;
+    }
+
+    .close-button{
+        top: 95px;
+        right: 10px;
+    }
+
+    .profile_img{
+        width: 100px;
+        height: 100px;
+    }
 }
