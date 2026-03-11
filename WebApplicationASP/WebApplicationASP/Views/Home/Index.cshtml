@@ -58,67 +58,94 @@
       {
         <div class="activity_card_container">
 
-          <div class="activity_card" data-id="@activity.Id" onclick="openModal(this)" data-status="@activity.Status" data-category="@string.Join(",", activity.Category)">
+          <div class="activity_card" data-id="@activity.Id" onclick="openModal(this)" data-status="@activity.Status"
+               data-category="@string.Join(",", activity.Category)">
             <img src="@activity.ImageUrl" class="activity_img" onerror="this.src='/images/No Image.png';" />
             <div class="activity_info">
               <h3 class="card-title">@activity.Title</h3>
               <p class="card-description">@activity.Description</p>
-              <p >เหลือที่ว่าง <span class="available-seat">@(activity.Number - activity.Member.Count)</span> คน</p>
+              <p>เหลือที่ว่าง <span class="available-seat">@(activity.Number - activity.Member.Count)</span> คน</p>
               <div class="card-tags">
                 <span class="category">ประเภท: @string.Join(", ", activity.Category.Select(c =>
-                                                                GetCategoryWithEmoji(c)))</span>
-                  <span class="status @(activity.Status == "open" ? "status_open" : "status_close")">Status:
-                    @activity.Status</span>
-                  </div>
+                                                                                                    GetCategoryWithEmoji(c)))</span>
+                  <span class="status activity-status @(activity.Status == "open" ? "status_open" : "status_close")"
+                        data-status="@activity.Status" data-expire="@activity.ExpireDate.ToString("yyyy-MM-ddTHH:mm:ss")">
+                    Status: @activity.Status
+                  </span>
                 </div>
               </div>
             </div>
-          }
-        </div>
-      </main>
-
-      <div class="activity-container">
-        @foreach (var item in Model)
-        {
-          <div class="card" data-id="@item.Id" onclick="openModal(this)">
           </div>
         }
       </div>
+    </main>
 
-      <div id="customModal" class="custom-modal">
-    <div class="custom-modal-content">
-      <span class="custom-close-btn" onclick="closeModal()">&times;</span>
-      
-      <img id="modalImage" class="modal-banner" src="" onerror="this.src='/images/No Image.png';" />
-      
-      <h3 id="modalTitle" class="modal-title">ชื่อกิจกรรม</h3>
-      <p class="modal-host"><strong>Host:</strong> <span id="modalHost"></span></p>
-      <hr>
-      
-      <p><strong>รายละเอียด:</strong> <span id="modalDescription"></span></p>
-      <p><strong>วันที่ปิดรับสมัคร:</strong> <span id="modalExpireDate"></span></p>
-      <p><strong>ประเภท:</strong> <span id="modalCategory"></span></p>
-      
-      <p>
-        <strong>สมัครแล้ว:</strong> <span id="modalMemberCount"></span>/<span id="modalmaxParticipants"></span> คน
-        <button id="toggleMembersBtn" class="btn-toggle-members" onclick="toggleMembers()">ดูรายชื่อ</button>
-      </p>
+    <div class="activity-container">
+      @foreach (var item in Model)
+      {
+        <div class="card" data-id="@item.Id" onclick="openModal(this)">
+        </div>
+      }
+    </div>
 
-      <div id="membersListContainer" class="members-container">
-        <ul id="modalMembersList" class="members-list"></ul>
-      </div>
+    <div id="customModal" class="custom-modal">
+      <div class="custom-modal-content">
+        <span class="custom-close-btn" onclick="closeModal()">&times;</span>
 
-      <p><strong>คงเหลือ:</strong> <span id="modalEmptySeats" class="text-blue"></span> ที่</p>
-      <p><strong>สถานะ:</strong> <span id="modalStatus" class="text-status"></span></p>
+        <img id="modalImage" class="modal-banner" src="" onerror="this.src='/images/No Image.png';" />
 
-      <div class="modal-footer">
-        <button id="joinActivityBtn" class="btn-primary-join" onclick="joinActivity()">Join</button>
-        <a id="editActivityBtn" class="btn-warning-edit" href="#">✏️ แก้ไขกิจกรรม</a>
+        <h3 id="modalTitle" class="modal-title">ชื่อกิจกรรม</h3>
+        <p class="modal-host"><strong>Host:</strong> <span id="modalHost"></span></p>
+        <hr>
+
+        <p><strong>รายละเอียด:</strong> <span id="modalDescription"></span></p>
+        <p><strong>วันที่ปิดรับสมัคร:</strong> <span id="modalExpireDate"></span></p>
+        <p><strong>ประเภท:</strong> <span id="modalCategory"></span></p>
+
+        <p>
+          <strong>สมัครแล้ว:</strong> <span id="modalMemberCount"></span>/<span id="modalmaxParticipants"></span> คน
+          <button id="toggleMembersBtn" class="btn-toggle-members" onclick="toggleMembers()">ดูรายชื่อ</button>
+        </p>
+
+        <div id="membersListContainer" class="members-container">
+          <ul id="modalMembersList" class="members-list"></ul>
+        </div>
+
+        <p><strong>คงเหลือ:</strong> <span id="modalEmptySeats" class="text-blue"></span> ที่</p>
+        <p><strong>สถานะ:</strong> <span id="modalStatus" class="text-status"></span></p>
+
+        <div class="modal-footer">
+          <button id="joinActivityBtn" class="btn-primary-join" onclick="joinActivity()">Join</button>
+          <a id="editActivityBtn" class="btn-warning-edit" href="#">✏️ แก้ไขกิจกรรม</a>
+        </div>
       </div>
     </div>
-  </div>
 
-      <script src="~/js/index.js"></script>
-    </body>
+    <script src="~/js/index.js"></script>
+    <script>
+      // สั่งให้เช็คเวลาทุกๆ 1 วินาที (1000 มิลลิวินาที)
+      setInterval(function () {
+      var now = new Date(); // ดึงเวลาปัจจุบันของเครื่องมา
+      var statusElements = document.querySelectorAll('.activity-status'); // หากล่องสถานะทั้งหมด
 
-  </html>
+      statusElements.forEach(function (el) {
+      var status = el.getAttribute('data-status');
+      var expireStr = el.getAttribute('data-expire');
+
+      // ถ้ากิจกรรมยังเปิดอยู่ ให้เอาเวลามาเช็ค
+      if (status === 'open' && expireStr) {
+      var expireDate = new Date(expireStr);
+
+      // ถ้าเวลาปัจจุบัน เลยวันที่ปิดรับสมัครไปแล้ว
+      if (now >= expireDate) {
+      el.innerText = 'Status: close'; // 1. เปลี่ยนคำบนการ์ด
+      el.className = 'status activity-status status_close'; // 2. เปลี่ยนสีเป็นสีแดง
+      el.setAttribute('data-status', 'close'); // 3. อัปเดตสถานะเพื่อไม่ให้เช็คซ้ำ
+      }
+      }
+      });
+      }, 1000);
+    </script>
+  </body>
+
+</html>

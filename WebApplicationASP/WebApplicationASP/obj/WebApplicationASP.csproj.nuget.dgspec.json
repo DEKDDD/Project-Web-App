@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ASUS\\OneDrive\\Desktop\\Web-Final v\\Project-Web-App\\WebApplicationASP\\WebApplicationASP\\WebApplicationASP.csproj": {}
+    "C:\\Coding (VSCode)\\Kmitl\\2 - Web App\\Project-Web-App\\WebApplicationASP\\WebApplicationASP\\WebApplicationASP.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ASUS\\OneDrive\\Desktop\\Web-Final v\\Project-Web-App\\WebApplicationASP\\WebApplicationASP\\WebApplicationASP.csproj": {
+    "C:\\Coding (VSCode)\\Kmitl\\2 - Web App\\Project-Web-App\\WebApplicationASP\\WebApplicationASP\\WebApplicationASP.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ASUS\\OneDrive\\Desktop\\Web-Final v\\Project-Web-App\\WebApplicationASP\\WebApplicationASP\\WebApplicationASP.csproj",
+        "projectUniqueName": "C:\\Coding (VSCode)\\Kmitl\\2 - Web App\\Project-Web-App\\WebApplicationASP\\WebApplicationASP\\WebApplicationASP.csproj",
         "projectName": "WebApplicationASP",
-        "projectPath": "C:\\Users\\ASUS\\OneDrive\\Desktop\\Web-Final v\\Project-Web-App\\WebApplicationASP\\WebApplicationASP\\WebApplicationASP.csproj",
-        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ASUS\\OneDrive\\Desktop\\Web-Final v\\Project-Web-App\\WebApplicationASP\\WebApplicationASP\\obj\\",
+        "projectPath": "C:\\Coding (VSCode)\\Kmitl\\2 - Web App\\Project-Web-App\\WebApplicationASP\\WebApplicationASP\\WebApplicationASP.csproj",
+        "packagesPath": "C:\\Users\\Panit\\.nuget\\packages\\",
+        "outputPath": "C:\\Coding (VSCode)\\Kmitl\\2 - Web App\\Project-Web-App\\WebApplicationASP\\WebApplicationASP\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Panit\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net10.0"

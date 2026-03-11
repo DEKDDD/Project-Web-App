@@ -86,6 +86,16 @@ namespace WebApplicationASP.Controllers
             var activity = _context.Activities.FirstOrDefault(a => a.Id == id);
             if (activity == null) return NotFound(new { success = false, message = "ไม่พบข้อมูลกิจกรรม" });
 
+            // ===============================================
+            // เพิ่มการเช็คเวลาตรงนี้ ถ้าหมดเวลาแล้วให้เปลี่ยนเป็น Close เลย
+            if (activity.Status == "open" && DateTime.Now >= activity.ExpireDate)
+            {
+                activity.Status = "close";
+                _context.Activities.Update(activity);
+                _context.SaveChanges(); // อัปเดตลง Database
+            }
+            // ===============================================
+
             // คำนวณจำนวนคนและที่ว่าง
             int currentMembers = activity.Member != null ? activity.Member.Count : 0;
             int emptySeats = activity.Number - currentMembers;
@@ -142,6 +152,24 @@ namespace WebApplicationASP.Controllers
             {
                 return Json(new { success = false, message = "ไม่พบกิจกรรมนี้" });
             }
+
+            // ==========================================
+            // เพิ่มใหม่: เช็คว่า ณ วินาทีที่กด Join หมดเวลาหรือยัง?
+            // ==========================================
+            if (DateTime.Now >= activity.ExpireDate || activity.Status.ToLower() == "close")
+            {
+                // ถ้าหมดเวลาแล้ว ให้เปลี่ยน Status เป็น close ในฐานข้อมูลทันที
+                if (activity.Status != "close")
+                {
+                    activity.Status = "close";
+                    _context.Activities.Update(activity);
+                    await _context.SaveChangesAsync();
+                }
+
+                // ส่งข้อความกลับไปบอกหน้าเว็บว่าหมดเวลาแล้ว
+                return Json(new { success = false, message = "เนื่องจากกิจกรรมนี้หมดเวลาหรือปิดรับสมัครแล้ว" });
+            }
+            // ==========================================
 
             // ถ้า Member ยังเป็น null ให้สร้าง List เปล่ามารองรับ
             if (activity.Member == null) activity.Member = new List<string>();
