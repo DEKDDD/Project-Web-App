@@ -19,12 +19,10 @@
     <div class="nav_auth">
     @if (User.Identity.IsAuthenticated)
     {
-        @* ดึง URL รูปจาก Claim *@
         var profilePic = User.FindFirst("ProfileImage")?.Value ?? "/images/default.jpg";
 
         <div class="profile-dropdown" style="position: relative; display: inline-block;">
 
-            @* เปลี่ยนจากชื่อ เป็นรูปภาพ *@
             <button class="button_auth" onclick="toggleProfileMenu(event)" 
                     style="display: flex; align-items: center; padding: 0; border-radius: 50%; width: 50px; height: 50px; overflow: hidden; border: 2px solid white; background: none;">
                 <img src="@profilePic" 
@@ -34,7 +32,6 @@
             </button>
 
             <div id="profileMenu" class="profile-menu">
-                @* แสดงชื่อข้างในเมนูแทน (ถ้ายังอยากให้เห็นชื่อ) *@
                 <div style="padding: 10px; border-bottom: 1px solid #eee; font-weight: bold; color: #333;">
                     @User.Identity.Name
                 </div>
@@ -65,7 +62,6 @@
     </div>
 </nav>
 
-<!-- เนื้อหาของแต่ละหน้า -->
 @RenderBody()
 
 

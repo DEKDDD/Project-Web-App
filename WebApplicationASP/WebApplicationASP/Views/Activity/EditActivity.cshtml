@@ -75,7 +75,6 @@
     <a asp-controller="Home" asp-action="Index" class="close-button">X</a>
 
     <script>
-        // ฟังก์ชันพรีวิวรูปภาพ
         function previewImage(event) {
             var reader = new FileReader();
             reader.onload = function(){
@@ -86,10 +85,8 @@
             reader.readAsDataURL(event.target.files[0]);
         }
 
-        // ฟังก์ชันเมื่อกดปุ่มปิดรับสมัคร
         function closeActivity() {
             if(confirm("คุณแน่ใจหรือไม่ว่าต้องการ ปิดรับสมัคร กิจกรรมนี้? (ปิดแล้วจะไม่สามารถเปิดใหม่ได้)")) {
-                // เปลี่ยนค่า Status ที่ซ่อนไว้ให้เป็น close แล้วสั่ง Submit ฟอร์ม
                 document.getElementById('activityStatus').value = "close";
                 document.getElementById('editForm').submit();
             }

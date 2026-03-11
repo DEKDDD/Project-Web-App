@@ -139,17 +139,16 @@ button:hover{
 
 
 
-/* สไตล์ของเมนู */
 .side-menu {
   position: fixed;
   display : None;
   top: 82px;
-  right: 0; /* ซ่อนไว้ทางขวา (กว้าง 300px) */
+  right: 0;
   width: 300px;
   height: 100%;
   background-color: white;
   box-shadow: -2px 0 5px rgba(0,0,0,0.2);
-  transition: 0.3s; /* ทำให้มันเลื่อนแบบลื่นๆ */
+  transition: 0.3s;
   z-index: 999;
 }
 
@@ -186,15 +185,13 @@ button:hover{
     background: #f5f5f5;
 }
 
-/* ตกแต่งปุ่มปิดและเนื้อหาข้างใน */
 .menu-content { padding: 20px; }
 .close-btn { cursor: pointer; font-size: 25px; float: right;}
 
-/* คอนเทนเนอร์ */
 .switch {
   position: relative;
   display: inline-block;
-  width: 80px; /* ขยายความกว้างนิดหน่อยเพื่อให้พอดีตัวอักษร */
+  width: 80px;
   height: 30px;
   
 }
@@ -210,20 +207,18 @@ button:hover{
   border-radius: 20px;
 }
 
-/* ส่วนของตัวอักษร */
 .slider:after {
-  content: "OR"; /* ข้อความตอนปิด */
+  content: "OR";
   color: rgb(0, 0, 0);
   display: block;
   position: absolute;
   transform: translate(-50%,-50%);
   top: 50%;
-  left: 70%; /* วางไว้ฝั่งขวาตอนปิด */
+  left: 70%;
   font-size: 15px;
   font-weight: bold;
 }
 
-/* ตัวปุ่มกลมๆ */
 .slider:before {
   position: absolute;
   content: "";
@@ -232,17 +227,16 @@ button:hover{
   background-color: white;
   transition: .4s;
   border-radius: 50%;
-  z-index: 2; /* ให้ปุ่มอยู่ทับตัวอักษร */
+  z-index: 2;
 }
 
-/* เมื่อสวิตช์เปิด (Checked) */
 input:checked + .slider {
   background-color: #000000;
 }
 
 input:checked + .slider:after {
-  content: "AND"; /* เปลี่ยนเป็นคำว่า ON */
-  left: 30%;    /* ย้ายมาฝั่งซ้าย */
+  content: "AND";
+  left: 30%;
   color: rgb(255, 255, 255);
 }
 
@@ -251,7 +245,7 @@ input:checked + .slider:before {
 }
 
 .index-link {
-  cursor: pointer; /* เปลี่ยนเมาส์เป็นรูปมือ */
+  cursor: pointer;
   transition: 0.3s;
   text-decoration: none;
   color: inherit;
@@ -286,7 +280,7 @@ input:checked + .slider:before {
 
 .profile-container {
   display: flex;
-  overflow-x: auto; /* ให้เลื่อนซ้าย-ขวาได้ */
+  overflow-x: auto;
   gap: 15px;
   padding-bottom: 10px;
   white-space: nowrap;
@@ -337,7 +331,6 @@ input:checked + .slider:before {
     padding: 20px;
 }
 
-/* รูปภาพหลักใน Modal */
 .modal-image {
     width: 100%;
     height: 220px;
@@ -346,7 +339,6 @@ input:checked + .slider:before {
     margin-bottom: 15px;
 }
 
-/* หัวข้อและข้อมูล Host */
 .modal-title {
     margin-bottom: 5px;
 }
@@ -356,7 +348,6 @@ input:checked + .slider:before {
     font-size: 0.9em;
 }
 
-/* ส่วนของรายชื่อสมาชิก */
 .btn-toggle-list {
     font-size: 0.8em;
     margin-left: 10px;
@@ -365,7 +356,7 @@ input:checked + .slider:before {
 }
 
 .members-list-container {
-    display: none; /* ควบคุมผ่าน JS เหมือนเดิม */
+    display: none;
     background-color: #f0f0f0;
     padding: 10px;
     border-radius: 5px;
@@ -379,7 +370,6 @@ input:checked + .slider:before {
     padding-left: 20px;
 }
 
-/* สถานะและที่ว่าง */
 .text-remaining {
     color: blue;
     font-weight: bold;
@@ -389,7 +379,6 @@ input:checked + .slider:before {
     font-weight: bold;
 }
 
-/* ปุ่มกดด้านล่าง */
 .modal-actions {
     margin-top: 20px;
     display: flex;
@@ -408,7 +397,7 @@ input:checked + .slider:before {
 }
 
 .btn-edit {
-    display: none; /* ควบคุมผ่าน JS */
+    display: none;
     flex: 1;
     padding: 12px;
     background-color: #ffc107;
@@ -419,7 +408,6 @@ input:checked + .slider:before {
     text-align: center;
 }
 
-/* รูปภาพ Banner */
 .modal-banner {
   width: 100%;
   height: 200px;
@@ -428,7 +416,6 @@ input:checked + .slider:before {
   margin-bottom: 15px;
 }
 
-/* หัวข้อและข้อมูลโฮสต์ */
 .modal-title {
   margin-top: 0;
   margin-bottom: 5px;
@@ -440,7 +427,6 @@ input:checked + .slider:before {
   font-size: 0.9em;
 }
 
-/* ปุ่มดูรายชื่อ */
 .btn-toggle-members {
   font-size: 0.8em;
   margin-left: 10px;
@@ -451,9 +437,8 @@ input:checked + .slider:before {
   padding: 2px 8px;
 }
 
-/* กล่องรายชื่อสมาชิก */
 .members-container {
-  display: none; /* คุมเปิด-ปิดด้วย JS */
+  display: none;
   background-color: #f9f9f9;
   padding: 10px;
   border-radius: 5px;
@@ -470,7 +455,6 @@ input:checked + .slider:before {
   color: #555;
 }
 
-/* ข้อความสถานะ */
 .text-blue {
   color: blue;
 }
@@ -480,7 +464,6 @@ input:checked + .slider:before {
   color: black;
 }
 
-/* ส่วนท้ายและปุ่มดำเนินการ */
 .modal-footer {
   margin-top: 20px;
   text-align: center;
@@ -499,7 +482,7 @@ input:checked + .slider:before {
 }
 
 .btn-warning-edit {
-  display: none; /* คุมเปิด-ปิดด้วย JS */
+  display: none;
   flex: 1;
   padding: 10px 20px;
   background-color: #ffc107;
@@ -518,7 +501,7 @@ input:checked + .slider:before {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 1; /* ให้ทับเนื้อหาอื่นเพื่อรับแรงคลิก */
+    z-index: 1;
 }
 
 .activity_card:hover {
@@ -539,7 +522,7 @@ input:checked + .slider:before {
 .profile_img{
   width: 170px;
   height: 170px;
-  border-radius: 50%; /* ทำเป็นวงกลม */
+  border-radius: 50%;
   border: 4px solid rgb(0, 0, 0);
   object-fit: cover;
 }
@@ -548,7 +531,7 @@ input:checked + .slider:before {
     padding: 15px;
     display: flex;
     flex-direction: column;
-    flex-grow: 1; /* สั่งให้เนื้อหายืดเต็มพื้นที่ที่เหลือ */
+    flex-grow: 1;
 }
 
 
@@ -575,80 +558,78 @@ input:checked + .slider:before {
 }
 
 .close-button {
-    position: fixed;    /* ทำให้ปุ่มลอยอยู่ที่เดิมแม้จะเลื่อนหน้าจอ (Scroll) */
-    top: 90px;          /* ห่างจากขอบบน 20px */
-    right: 20px;        /* ห่างจากขอบขวา 20px */
+    position: fixed;
+    top: 90px;
+    right: 20px;
     
-    width: 80px;        /* ความกว้างปุ่ม */
-    height: 40px;       /* ความสูงปุ่ม */
-    background-color: #ec4242; /* สีพื้นหลังปุ่ม (สีดำเทา) */
-    color: white;       /* สีของตัว X */
+    width: 80px;
+    height: 40px;
+    background-color: #ec4242;
+    color: white;
     
-    text-decoration: none; /* ลบขีดเส้นใต้ */
-    font-size: 30px;    /* ขนาดตัวกากบาท */
-    display: flex;      /* ใช้จัดการให้กากบาทอยู่ตรงกลางปุ่ม */
+    text-decoration: none;
+    font-size: 30px;
+    display: flex;
     justify-content: center;
     align-items: center;
     border: 4px solid #000;
     border-radius: 15px;
     
 
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3); /* ใส่เงาให้ดูมีมิติ */
-    transition: 0.3s;   /* ให้ดูสมูทตอนเอาเมาส์วาง */
-    z-index: 998;      /* มั่นใจว่าปุ่มจะลอยอยู่เหนือทุกอย่าง */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    transition: 0.3s;
+    z-index: 998;
 }
 
 .close-button:hover {
-    background-color: #ff4d4d; /* เปลี่ยนเป็นสีแดงตอนเอาเมาส์วาง */
-    transform: scale(1.1);     /* ขยายขนาดขึ้นเล็กน้อย */
+    background-color: #ff4d4d;
+    transform: scale(1.1);
 }
 
-/* ตัวฟอร์มด้านใน */
 .default-form {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    width: 100%;            /* สำคัญ: ให้ฟอร์มกางเต็มความกว้างของกล่องขาว */
-    align-items: center;    /* จัด input และ button ให้อยู่กึ่งกลาง */
+    width: 100%;
+    align-items: center;
 }
 
 .default-form input {
-    width: 80%;             /* ปรับความกว้างช่องพิมพ์ตามต้องการ */
+    width: 80%;
     max-width: 300px;
     padding: 10px;
 }
 
 .default-form textarea {
-    width: 80%;             /* ปรับความกว้างช่องพิมพ์ตามต้องการ */
+    width: 80%;
     max-width: 300px;
     padding: 10px;
 }
 
-/* ตัวคลุมชั้นนอกสุด ทำหน้าที่จัดกึ่งกลาง */
 .form-page-wrapper {
     display: flex;
-    justify-content: center; /* กึ่งกลางแนวนอน */
-    align-items: center;     /* กึ่งกลางแนวตั้ง */
-    width: 100%;             /* กว้างเต็มพื้นที่ */
-    min-height: 100vh;      /* สูงเท่ากับความสูงหน้าจอ */
-    background-color: #f4f7f6; /* ใส่สีพื้นหลังเฉพาะหน้านี้ได้เลย */
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #f4f7f6;
 }
 
 .detail-page-wrapper {
     display: flex;
-    justify-content: center; /* กึ่งกลางแนวนอน */
-    align-items: center;     /* กึ่งกลางแนวตั้ง */
-    width: 100%;             /* กว้างเต็มพื้นที่ */
-    min-height: 100vh;      /* สูงเท่ากับความสูงหน้าจอ */
-    background-color: #f4f7f6; /* ใส่สีพื้นหลังเฉพาะหน้านี้ได้เลย */
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #f4f7f6;
 }
 
 .detail-container {
-    display: flex;          /* ต้องใส่ display: flex เพื่อให้สั่งกึ่งกลางได้ */
-    flex-direction: row; /* จัดเนื้อหาข้างใน (H2, Form, P) เป็นแนวตั้ง */
-    align-items: start;    /* จัดเนื้อหาทุกอย่างในกล่องขาวให้ "อยู่กึ่งกลาง" */
+    display: flex;
+    flex-direction: row;
+    align-items: start;
     background-color: white;
-    padding: 50px;          /* เพิ่ม padding ให้กล่องดูใหญ่และโปร่งขึ้น */
+    padding: 50px;
     border-radius: 30px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     width: 60%; 
@@ -663,11 +644,11 @@ input:checked + .slider:before {
 }
 
 .form-container {
-    display: flex;          /* ต้องใส่ display: flex เพื่อให้สั่งกึ่งกลางได้ */
-    flex-direction: column; /* จัดเนื้อหาข้างใน (H2, Form, P) เป็นแนวตั้ง */
-    align-items: center;    /* จัดเนื้อหาทุกอย่างในกล่องขาวให้ "อยู่กึ่งกลาง" */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: white;
-    padding: 50px;          /* เพิ่ม padding ให้กล่องดูใหญ่และโปร่งขึ้น */
+    padding: 50px;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     width: 60%; 
@@ -680,14 +661,14 @@ input:checked + .slider:before {
 
 .profile-page-wrapper {
   display: flex;
-  flex-direction: column; /* จัดเรียงจากบนลงล่าง */
+  flex-direction: column;
   padding: 20px;
-  gap: 15px; /* ระยะห่างระหว่าง Profile, หัวข้อ และ Slider */
+  gap: 15px;
 }
 
 .profile-section {
   display: flex;
-  align-items: center; /* ให้ชื่ออยู่กึ่งกลางความสูงของวงกลม */
+  align-items: center;
   gap: 20px;
 
 }
@@ -698,18 +679,18 @@ input:checked + .slider:before {
 
 .category-container {
   display: flex;
-  flex-direction: column; /* เรียงลงมาเป็นแนวตั้ง */
-  align-items: flex-start; /* จัดให้เนื้อหาข้างในชิดซ้าย */
-  width: fit-content;      /* ให้ความกว้างเท่ากับเนื้อหา */
-  margin: 0 auto;         /* ถ้าอยากให้กลุ่มนี้อยู่กลางจอ แต่เนื้อหาข้างในชิดซ้าย */
+  flex-direction: column;
+  align-items: flex-start;
+  width: fit-content;
+  margin: 0 auto;
   text-align: left;
 }
 
 .category-item {
   display: flex;
-  align-items: center;    /* ให้ checkbox กับตัวหนังสืออยู่ตรงกลางบรรทัดเดียวกัน */
-  gap: 10px;              /* เว้นระยะห่างระหว่างช่องติ๊กกับตัวหนังสือ */
-  margin-bottom: 8px;     /* เว้นระยะห่างระหว่างแถว */
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
   cursor: pointer;
 }
 
@@ -761,9 +742,8 @@ input:checked + .slider:before {
     background: #f5f5f5;
 }
 
-/* พื้นหลังมืดๆ ทับหน้าเว็บ */
 .custom-modal {
-    display: none; /* เริ่มต้นให้ซ่อนไว้ */
+    display: none;
     position: fixed;
     z-index: 1000;
     left: 0;
@@ -773,10 +753,9 @@ input:checked + .slider:before {
     background-color: rgba(0, 0, 0, 0.4); 
 }
 
-/* ตัวกล่องป๊อปอัป */
 .custom-modal-content {
     background-color: #fefefe;
-    margin: 10% auto; /* ให้อยู่ตรงกลาง */
+    margin: 10% auto;
     padding: 20px;
     border: 1px solid #888;
     border-radius: 8px;
@@ -784,11 +763,10 @@ input:checked + .slider:before {
     max-width: 500px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     position: relative;
-    max-height: 75vh; /* จำกัดความสูงไม่เกิน 75% ของหน้าจอ */
-    overflow-y: auto; /* ถ้าเนื้อหายาวเกิน ให้โชว์แถบเลื่อน (Scrollbar) อัตโนมัติ */
+    max-height: 75vh;
+    overflow-y: auto;
 }
 
-/* ปุ่มกากบาทปิด */
 .custom-close-btn {
     position: absolute;
     top: 10px;
@@ -803,9 +781,8 @@ input:checked + .slider:before {
     color: #000;
 }
 
-/* คลาสใหม่สำหรับควบคุมให้ Tag อยู่ล่างสุด */
 .card-tags {
-    margin-top: auto; /* Flexbox ที่จะดันตัวเองลงไปล่างสุดเสมอ */
+    margin-top: auto;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
