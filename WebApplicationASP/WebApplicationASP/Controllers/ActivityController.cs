@@ -25,6 +25,7 @@ namespace WebApplicationASP.Controllers
         public async Task<IActionResult> HandleAddActivity(Activity activity, IFormFile ImageFile)
         {
             var new_activity = activity;
+            
             new_activity.Status = "open";
             new_activity.Member = [];
 

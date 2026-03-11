@@ -14,6 +14,14 @@ public class HomeController : Controller
     public IActionResult Index()
     {
         var activities = _context.Activities.ToList();
+        var expired = activities
+            .Where(a => DateTime.Now >= a.ExpireDate && a.Status != "close");
+        foreach (var activity in expired)
+        {
+            activity.Status = "close";
+        }
+        _context.SaveChanges();
+
         return View(activities);
     }
 
