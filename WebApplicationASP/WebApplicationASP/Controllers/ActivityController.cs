@@ -24,8 +24,15 @@ namespace WebApplicationASP.Controllers
         [Authorize]
         public async Task<IActionResult> HandleAddActivity(Activity activity, IFormFile ImageFile)
         {
+            // ✅ เช็คเวลา
+            if (activity.ExpireDate <= DateTime.Now)
+            {
+                TempData["Error"] = "ไม่สามารถสร้างกิจกรรมได้: เวลาปิดรับต้องมากกว่าปัจจุบัน";
+                return RedirectToAction("AddActivity");
+            }
+
             var new_activity = activity;
-            
+
             new_activity.Status = "open";
             new_activity.Member = [];
 
@@ -55,22 +62,24 @@ namespace WebApplicationASP.Controllers
 
             _context.Activities.Add(new_activity);
             await _context.SaveChangesAsync();
+
             var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
             if (userIdClaim != null)
             {
                 var userId = int.Parse(userIdClaim);
                 var user = await _context.Users.FindAsync(userId);
+
                 if (user != null)
                 {
-                    // 3. เพิ่ม ID กิจกรรมลงใน List ของ User
                     user.CreatedActivityIds.Add(new_activity.Id);
                     _context.Users.Update(user);
                     await _context.SaveChangesAsync();
                 }
             }
+
             return RedirectToAction("Index", "Home");
         }
-        
         [HttpGet]
         public IActionResult GetActivityDetails(int id)
         {
@@ -100,10 +109,10 @@ namespace WebApplicationASP.Controllers
                 title = activity.Title,
                 host = activity.Host ?? "ไม่ระบุชื่อ",
                 description = activity.Description,
-                
+
                 // แก้ไขบรรทัดนี้: ปรับ format ให้แสดงวันที่และเวลาในหน้าป๊อปอัป
-                expireDate = activity.ExpireDate.ToString("dd/MM/yyyy HH:mm น."), 
-                
+                expireDate = activity.ExpireDate.ToString("dd/MM/yyyy HH:mm น."),
+
                 category = activity.Category != null ? string.Join(", ", activity.Category) : "ไม่มีหมวดหมู่",
                 status = activity.Status,
                 memberCount = currentMembers,
@@ -136,7 +145,7 @@ namespace WebApplicationASP.Controllers
 
             // ถ้า Member ยังเป็น null ให้สร้าง List เปล่ามารองรับ
             if (activity.Member == null) activity.Member = new List<string>();
-            
+
             // เช็คว่าผู้ใช้กด Join ไปแล้วหรือยัง
             if (activity.Member.Contains(currentUsername))
             {

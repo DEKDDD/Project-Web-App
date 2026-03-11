@@ -1,6 +1,12 @@
 @{
     ViewData["Title"] = "New Activity";
 }
+@if (TempData["Error"] != null)
+{
+<script>
+    alert("@Html.Raw(TempData["Error"])");
+</script>
+}
 @model Activity
 <!doctype html>
 <html lang="en">
@@ -51,7 +57,7 @@
     
     <script src="api.js"></script>
     <script src="main.js"></script>
-    <script src="index.js"></script>
+
 </body>
 
 </html>

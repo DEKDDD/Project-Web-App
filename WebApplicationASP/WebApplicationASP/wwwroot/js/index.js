@@ -413,8 +413,3 @@ function uploadProfileImage(input) {
     // --- อย่าเอาโค้ดมาวางตรงนี้ เพราะ data จะมองไม่เห็น (undefined) ---
 }
  
-// กำหนดเวลาปิดกิจกรรม
-const input = document.getElementById("date");
-const now = new Date();
-now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
-input.min = now.toISOString().slice(0,16);
