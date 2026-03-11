@@ -28,7 +28,6 @@ public class AuthController : Controller
     }
 
 
-    // ✅ Signup
    [HttpPost("signup")]
     public IActionResult Signup([FromBody] Signup signup)
     {

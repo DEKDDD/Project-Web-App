@@ -1,10 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using WebApplicationASP.Models; // <-- ต้องเพิ่มบรรทัดนี้ เพื่อให้มันรู้จัก User และ Activity
+using WebApplicationASP.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
@@ -19,7 +18,6 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 builder.Services.AddAuthorization();
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -41,15 +39,11 @@ app.MapControllerRoute(
 
 Console.WriteLine(Directory.GetCurrentDirectory());
 
-// ==========================================
-// ส่วนของการทำ Database Seeding
-// ==========================================
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
     context.Database.EnsureCreated(); 
 
-    // 1. สร้างข้อมูลผู้ใช้จำลอง
     if (!context.Users.Any())
     {
         context.Users.AddRange(
@@ -62,7 +56,6 @@ using (var scope = app.Services.CreateScope())
         context.SaveChanges();
     }
 
-    // 2. สร้างข้อมูลกิจกรรมจำลอง โดยดึงชื่อจาก User
     if (!context.Activities.Any())
     {
         var host1 = context.Users.FirstOrDefault(u => u.Username == "Admin01");
@@ -71,7 +64,6 @@ using (var scope = app.Services.CreateScope())
         var user3 = context.Users.FirstOrDefault(u => u.Username == "นักกินมืออาชีพ");
         var user4 = context.Users.FirstOrDefault(u => u.Username == "แค่คนเหงาๆ");
 
-        // ตรวจสอบเพื่อป้องกัน Error กรณีหา User ไม่เจอ
         if (host1 != null && user1 != null && user2 != null && user3 != null && user4 != null)
         {
             context.Activities.AddRange(

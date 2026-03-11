@@ -1,14 +1,13 @@
 ﻿@{
   ViewData["Title"] = "Home Page";
 
-  // เพิ่มฟังก์ชันแปลงคำเป็นอีโมจิตรงนี้ครับ
   string GetCategoryWithEmoji(string category)
   {
     var c = category.Trim().ToLower();
     if (c == "sport") return "กีฬา ⚽";
     if (c == "music") return "ดนตรี 🎵 ";
     if (c == "food") return "อาหาร 🍔";
-    return "ทั่วไป 💬"; // ถ้าไม่มีในเงื่อนไข
+    return "ทั่วไป 💬";
   }
 }
 @model List<Activity>
@@ -56,10 +55,9 @@
     <div id="event-list" class="activity_grid">
       @foreach (var activity in Model)
       {
-        <div class="activity_card_container">
+        <div class="activity_card_container" data-status="@activity.Status" data-category="@string.Join(",", activity.Category)">
 
-          <div class="activity_card" data-id="@activity.Id" onclick="openModal(this)" data-status="@activity.Status"
-               data-category="@string.Join(",", activity.Category)">
+          <div class="activity_card" data-id="@activity.Id" onclick="openModal(this)" >
             <img src="@activity.ImageUrl" class="activity_img" onerror="this.src='/images/No Image.png';" />
             <div class="activity_info">
               <h3 class="card-title">@activity.Title</h3>
@@ -123,24 +121,21 @@
 
     <script src="~/js/index.js"></script>
     <script>
-      // สั่งให้เช็คเวลาทุกๆ 1 วินาที (1000 มิลลิวินาที)
       setInterval(function () {
-      var now = new Date(); // ดึงเวลาปัจจุบันของเครื่องมา
-      var statusElements = document.querySelectorAll('.activity-status'); // หากล่องสถานะทั้งหมด
+      var now = new Date();
+      var statusElements = document.querySelectorAll('.activity-status');
 
       statusElements.forEach(function (el) {
       var status = el.getAttribute('data-status');
       var expireStr = el.getAttribute('data-expire');
 
-      // ถ้ากิจกรรมยังเปิดอยู่ ให้เอาเวลามาเช็ค
       if (status === 'open' && expireStr) {
       var expireDate = new Date(expireStr);
 
-      // ถ้าเวลาปัจจุบัน เลยวันที่ปิดรับสมัครไปแล้ว
       if (now >= expireDate) {
-      el.innerText = 'Status: close'; // 1. เปลี่ยนคำบนการ์ด
-      el.className = 'status activity-status status_close'; // 2. เปลี่ยนสีเป็นสีแดง
-      el.setAttribute('data-status', 'close'); // 3. อัปเดตสถานะเพื่อไม่ให้เช็คซ้ำ
+      el.innerText = 'Status: close';
+      el.className = 'status activity-status status_close';
+      el.setAttribute('data-status', 'close');
       }
       }
       });
